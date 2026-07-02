@@ -3,14 +3,11 @@
 Personal portfolio site for **Arka Datta**, Full-Stack Web Developer & Robotics Engineer.
 A bold, brutalist-inspired, single-page portfolio built with vanilla HTML, CSS, and JavaScript.
 
-🔗 **Live site:** [arka-124.github.io/portfolio](#) <!-- replace with your actual GitHub Pages link -->
-
+🔗 **Live site:** [arka-124.github.io/portfolio](#) 
 ---
 
 ## Preview
 
-<!-- Drop a screenshot or GIF of the hero section here, e.g.: -->
-<!-- ![Portfolio preview](images/preview.png) -->
 
 ---
 
