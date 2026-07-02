@@ -1,0 +1,45 @@
+/* --- CUSTOM CURSOR --- */
+
+*, *:hover {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent, #00f0ff);
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--accent, #00f0ff);
+  background: rgba(0, 240, 255, 0.07);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0.6;
+  transition:
+    width  0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s ease,
+    opacity    0.25s ease;
+}
+
+body.hovering .cursor-outline {
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 240, 255, 0.14);
+  opacity: 0.8;
+  border-color: transparent;
+}

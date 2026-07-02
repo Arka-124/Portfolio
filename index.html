@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arka Datta — Full-Stack Web Developer &amp; Robotics Engineer. Portfolio of AI, robotics, and web development projects.">
+  <link rel="icon" type="image/png" href="logo/Layerstop_4-removebg-preview.png">
+  <title>Arka Datta | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cursor.css">
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#stack">Stack</a>
+    <a href="contact.html" class="drawer-contact">Send a message</a>
+  </nav>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="logo">AD.</div>
+    <nav class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#stack">Stack</a>
+      <a href="contact.html" class="btn-sm">Send a message</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO SECTION
+         ============================================================ -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-halo"></div>
+      <div class="hero-cutout"></div>
+
+      <div class="hero-inner">
+        <!-- Left: eyebrow + headline + chips -->
+        <div class="hero-left" id="hero-text">
+          <span class="hero-eyebrow">Robotics Engineer &amp; Developer</span>
+          <h1 class="hero-title">Arka<br>Datta</h1>
+
+          <div class="hero-chips">
+            <!-- Robotics chip -->
+            <div class="hero-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/>
+                <path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/>
+              </svg>
+              Robotics
+            </div>
+            <!-- AI / ML chip -->
+            <div class="hero-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+              </svg>
+              AI&nbsp;/&nbsp;ML
+            </div>
+            <!-- Full-Stack chip -->
+            <div class="hero-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+              Full-Stack
+            </div>
+            <!-- Embedded chip -->
+            <div class="hero-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <rect x="9" y="9" width="6" height="6"/>
+                <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+                <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+                <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+                <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+              </svg>
+              Embedded
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: glass pitch panel -->
+        <div class="hero-pitch" id="hero-right">
+          <p>
+            B.Tech in Automation and Robotics at <strong>GGSIPU EDC</strong>,
+            currently in 3rd year. I build things that move, think, and
+            interact — from <strong>6-DOF robotic arms</strong> and smart
+            embedded systems to <strong>AI/ML pipelines</strong> and
+            full-stack web applications.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EARLY BUILDS — MARQUEE
+         ============================================================ -->
+    <section class="marquee-section reveal">
+      <div class="marquee-header">
+        <span class="section-eyebrow">Early Builds</span>
+      </div>
+      <div class="marquee-track">
+        <!-- Set 1 -->
+        <div class="marquee-card">
+          <span class="marquee-card-tag">AI / ML</span>
+          <span class="marquee-card-name">AI Chatbot for Movie Reviews</span>
+          <span class="marquee-card-tech">Python • NLP • PyTorch</span>
+        </div>
+        <div class="marquee-card">
+          <span class="marquee-card-tag">Robotics</span>
+          <span class="marquee-card-name">Automated Toll Gate Development</span>
+          <span class="marquee-card-tech">Arduino • Embedded C • Sensors</span>
+        </div>
+        <div class="marquee-card">
+          <span class="marquee-card-tag">Robotics</span>
+          <span class="marquee-card-name">Miniature 6 DOF Robotic Arm</span>
+          <span class="marquee-card-tech">ROS • Kinematics • C++</span>
+        </div>
+        <div class="marquee-card">
+          <span class="marquee-card-tag">Web Dev</span>
+          <span class="marquee-card-name">Custom Car Brand Website</span>
+          <span class="marquee-card-tech">HTML5 • CSS Grid • JavaScript</span>
+        </div>
+        <div class="marquee-card">
+          <span class="marquee-card-tag">AI / ML</span>
+          <span class="marquee-card-name">IIT Kanpur Internship Project</span>
+          <span class="marquee-card-tech">Python • Sentiment Analysis</span>
+        </div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="marquee-card">
+          <span class="marquee-card-tag">AI / ML</span>
+          <span class="marquee-card-name">AI Chatbot for Movie Reviews</span>
+          <span class="marquee-card-tech">Python • NLP • PyTorch</span>
+        </div>
+        <div class="marquee-card">
+          <span class="marquee-card-tag">Robotics</span>
+          <span class="marquee-card-name">Automated Toll Gate Development</span>
+          <span class="marquee-card-tech">Arduino • Embedded C • Sensors</span>
+        </div>
+        <div class="marquee-card">
+          <span class="marquee-card-tag">Robotics</span>
+          <span class="marquee-card-name">Miniature 6 DOF Robotic Arm</span>
+          <span class="marquee-card-tech">ROS • Kinematics • C++</span>
+        </div>
+        <div class="marquee-card">
+          <span class="marquee-card-tag">Web Dev</span>
+          <span class="marquee-card-name">Custom Car Brand Website</span>
+          <span class="marquee-card-tech">HTML5 • CSS Grid • JavaScript</span>
+        </div>
+        <div class="marquee-card">
+          <span class="marquee-card-tag">AI / ML</span>
+          <span class="marquee-card-name">IIT Kanpur Internship Project</span>
+          <span class="marquee-card-tech">Python • Sentiment Analysis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ORIGINS / INITIAL PORTFOLIO
+         ============================================================ -->
+    <section id="origins" class="section-container reveal">
+      <div class="origins-grid">
+        <div class="origins-left">
+          <h2 class="origins-heading">
+            <span class="drop-cap">I</span>nitial <span class="drop-cap">P</span>ortfolio
+          </h2>
+        </div>
+        <div class="origins-right">
+          <p class="origins-desc">This collection showcases the earliest phase of my development journey. It reflects the foundational skills, exploratory thinking, and early logic that set the direction for my current work. These projects represent the starting point of my craft where experimentation and a growing understanding of software architecture came together.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURED PROJECTS
+         ============================================================ -->
+    <section id="projects" class="section-container reveal">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-tag">AI / ML</span>
+              <span class="project-arrow">→</span>
+            </div>
+            <h3 class="project-name">AI Chatbot for Movie Reviews</h3>
+            <p class="project-desc">Developed during IIT Kanpur AI/ML Internship. A smart conversational agent designed to analyze sentiment and discuss cinema.</p>
+          </div>
+          <div class="project-footer">
+            <span class="project-tech">Python • NLP • PyTorch</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-tag">Robotics</span>
+              <span class="project-arrow">→</span>
+            </div>
+            <h3 class="project-name">Automated Toll Gate Development</h3>
+            <p class="project-desc">An automated smart toll system integrating sensor arrays and microcontrollers for seamless vehicle transit.</p>
+          </div>
+          <div class="project-footer">
+            <span class="project-tech">Arduino • Embedded C • Sensors</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-tag">Robotics</span>
+              <span class="project-arrow">→</span>
+            </div>
+            <h3 class="project-name">Miniature 6 DOF Robotic Arm</h3>
+            <p class="project-desc">A high-precision 6 Degrees of Freedom robotic arm designed, simulated, and programmed for complex manipulation tasks.</p>
+          </div>
+          <div class="project-footer">
+            <span class="project-tech">ROS • Kinematics • C++</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-tag">Web Dev</span>
+              <span class="project-arrow">→</span>
+            </div>
+            <h3 class="project-name">Custom Car Brand Website</h3>
+            <p class="project-desc">A highly aesthetic, interactive web experience showcasing premium automotive designs with smooth transitions.</p>
+          </div>
+          <div class="project-footer">
+            <span class="project-tech">HTML5 • CSS Grid • JavaScript</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT / EXPERIENCE — 3-COLUMN
+         ============================================================ -->
+    <section id="experience" class="section-container reveal">
+      <div class="about-grid">
+
+        <!-- Left: Education / Experience / Achievements -->
+        <div class="about-left">
+          <h2 class="section-title">Education</h2>
+          <div class="timeline-item">
+            <h3 class="timeline-title">GGSIPU EDC</h3>
+            <p class="timeline-subtitle">B.Tech Automation &amp; Robotics — 3rd Year</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="timeline-title">Kalyani Public School</h3>
+            <p class="timeline-subtitle">HS</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="timeline-title">St. Francis School</h3>
+            <p class="timeline-subtitle">Schooling</p>
+          </div>
+
+          <h2 class="section-title subsection-title">Experience</h2>
+          <div class="timeline-item">
+            <h3 class="timeline-title">AI/ML Intern</h3>
+            <p class="timeline-subtitle">IIT Kanpur</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="timeline-title">CS50x</h3>
+            <p class="timeline-subtitle">Harvard University</p>
+          </div>
+
+          <h2 class="section-title subsection-title">Achievements</h2>
+          <div class="timeline-item">
+            <h3 class="timeline-title">Failed BITSAT</h3>
+          </div>
+        </div>
+
+        <!-- Full-bleed background photo (drop an <img> in here, e.g. <img src="images/profile.jpg" alt="Arka Datta">) -->
+        <div class="about-photo-bg" id="about-photo-bg"></div>
+
+        <!-- Right: Languages / Tools / Contact / Interests -->
+        <div class="about-right">
+          <h2 class="section-title">Languages</h2>
+          <div class="timeline-item">
+            <h3 class="timeline-title">English</h3>
+          </div>
+          <div class="timeline-item">
+            <h3 class="timeline-title">Hindi</h3>
+          </div>
+          <div class="timeline-item">
+            <h3 class="timeline-title">Bengali</h3>
+          </div>
+          <div class="timeline-item">
+            <h3 class="timeline-title">Java</h3>
+          </div>
+
+          <h2 class="section-title subsection-title">Software</h2>
+          <div class="timeline-item">
+            <h3 class="timeline-title">Scroll down, it's literally right there.</h3>
+          </div>
+
+          <h2 class="section-title subsection-title">Contact</h2>
+          <div class="timeline-item">
+            <h3 class="timeline-title">The contact page exists for a reason.</h3>
+          </div>
+
+          <h2 class="section-title subsection-title">Interests</h2>
+          <div class="timeline-item">
+            <h3 class="timeline-title">Coding</h3>
+          </div>
+          <div class="timeline-item">
+            <h3 class="timeline-title">Development</h3>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TECH STACK — 2-COLUMN
+         ============================================================ -->
+    <section id="stack" class="section-container reveal">
+      <h2 class="section-title">Stack</h2>
+      <div class="stack-inner">
+
+        <!-- Left: icon grid -->
+        <div class="stack-icon-grid">
+          <div class="stack-icon-item">
+            <img src="logo/HTML5_Logo_512.png" alt="HTML5" loading="lazy" decoding="async">
+            <span class="stack-icon-label">HTML5</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/css3-logo.png" alt="CSS3" loading="lazy" decoding="async">
+            <span class="stack-icon-label">CSS3</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/js.png" alt="JavaScript" loading="lazy" decoding="async">
+            <span class="stack-icon-label">JS</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/nodejs.png" alt="Node.js" loading="lazy" decoding="async">
+            <span class="stack-icon-label">Node.js</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/expressjs.png" alt="Express.js" loading="lazy" decoding="async">
+            <span class="stack-icon-label">Express</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/mongodb.png" alt="MongoDB" loading="lazy" decoding="async">
+            <span class="stack-icon-label">MongoDB</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/java.png" alt="Java" loading="lazy" decoding="async">
+            <span class="stack-icon-label">Java</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/python.png" alt="Python" loading="lazy" decoding="async">
+            <span class="stack-icon-label">Python</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/c.png" alt="C" loading="lazy" decoding="async">
+            <span class="stack-icon-label">C</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/c++.png" alt="C++" loading="lazy" decoding="async">
+            <span class="stack-icon-label">C++</span>
+          </div>
+          <div class="stack-icon-item">
+            <img src="logo/git.png" alt="Git" loading="lazy" decoding="async">
+            <span class="stack-icon-label">Git</span>
+          </div>
+        </div>
+
+        <!-- Right: description -->
+        <div class="stack-desc-col">
+          <p>
+            Most of my time goes into <strong>Node.js</strong> backends with
+            <strong>MongoDB</strong> data layers and JavaScript frontends.
+            On the systems side I'm comfortable in <strong>C and C++</strong>,
+            with hands-on <strong>ROS</strong> experience from building the
+            6-DOF arm. Python is the go-to for AI/ML work —
+            PyTorch, NLP pipelines, scripting. Git keeps everything coherent.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-name">Arka Datta</div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">AD.</span>
+        <p>Robotics engineer, developer, maker. Building things that move and think.</p>
+      </div>
+      <nav class="footer-nav-col">
+        <span>Navigation</span>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#stack">Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-socials-col">
+        <span>Elsewhere</span>
+        <a href="https://github.com/Arka-124" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/arka-datta-88a961381/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:arkadatta1531@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">&copy; <span id="year"></span> Arka Datta. All rights reserved.</p>
+      <p class="footer-tagline">Built with code, not templates.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Glass Connect Button -->
+  <div id="glass-button-container">
+    <span class="glass-button-text">Connect</span>
+  </div>
+
+  <!-- GitHub Toggle -->
+  <button id="github-toggle" aria-label="Toggle GitHub popup">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577
+               0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755
+               -1.335-1.755-1.087-.744.084-.73.084-.73 1.205.085 1.84 1.237 1.84 1.237 1.07
+               1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.3-5.467-1.332
+               -5.467-5.93 0-1.31.468-2.382 1.236-3.222-.124-.303-.536-1.524.117-3.176 0 0
+               1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404
+               2.29-1.552 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235
+               1.912 1.235 3.222 0 4.61-2.807 5.625-5.48 5.92.43.37.823 1.102.823 2.222
+               0 1.606-.015 2.898-.015 3.293 0 .32.216.694.825.576C20.565 21.796 24 17.3
+               24 12c0-6.627-5.373-12-12-12z"/>
+    </svg>
+  </button>
+
+  <!-- GitHub Popup -->
+  <div id="github-popup">
+    <div class="popup-header">
+      <span class="popup-title">GitHub</span>
+      <button class="popup-close" aria-label="Close popup">&#x2715;</button>
+    </div>
+    <p class="popup-desc">Check out my latest projects, contributions, and open-source work.</p>
+    <a href="https://github.com/Arka-124" target="_blank" rel="noopener noreferrer" class="popup-link">
+      @Arka-124 &rarr;
+    </a>
+  </div>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script src="script.js"></script>
+  <script src="cursor.js" defer></script>
+
+  <!-- Three.js Glass Connect Button -->
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+    const container = document.getElementById('glass-button-container');
+    if (container) {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+      camera.position.z = 5;
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(100, 100);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x000000, 0);
+      renderer.domElement.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+      container.appendChild(renderer.domElement);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+      const dl = new THREE.DirectionalLight(0xffffff, 3);
+      dl.position.set(2, 5, 5); scene.add(dl);
+      const pl = new THREE.PointLight(0x00f0ff, 2.5);
+      pl.position.set(-2, -2, 3); scene.add(pl);
+
+      const mesh = new THREE.Mesh(
+        new THREE.TorusKnotGeometry(1.2, 0.38, 100, 16),
+        new THREE.MeshPhysicalMaterial({
+          color: 0xffffff, roughness: 0.05, metalness: 0,
+          transmission: 1.0, thickness: 3.0, ior: 1.5,
+          clearcoat: 1, clearcoatRoughness: 0,
+          opacity: 0.92, transparent: true
+        })
+      );
+      scene.add(mesh);
+
+      (function animate() {
+        requestAnimationFrame(animate);
+        mesh.rotation.x += 0.006;
+        mesh.rotation.y += 0.009;
+        renderer.render(scene, camera);
+      })();
+
+      container.addEventListener('click', () => { window.location.href = 'contact.html'; });
+    }
+  </script>
+
+  <!-- GSAP hero parallax + footer wordmark + nav scroll -->
+  <script>
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const hero     = document.getElementById('hero');
+      const heroText = document.getElementById('hero-text');
+      const heroRight = document.getElementById('hero-right');
+
+      if (hero && heroText && heroRight) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.2
+          }
+        })
+        .to(heroText,  { y: -120, scale: 0.92, opacity: 0.85, ease: 'power2.out' }, 0)
+        .to(heroRight, { y: -80, opacity: 0,   ease: 'power2.out' }, 0);
+
+        /* CSS custom property for cutout parallax */
+        gsap.to(hero, {
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          },
+          '--hero-parallax': '120px'
+        });
+
+        /* hero-active inset vignette */
+        ScrollTrigger.create({
+          trigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          onEnter:      () => hero.classList.add('hero-active'),
+          onLeave:      () => hero.classList.remove('hero-active'),
+          onEnterBack:  () => hero.classList.add('hero-active'),
+          onLeaveBack:  () => hero.classList.remove('hero-active')
+        });
+      }
+
+      /* Footer ghost wordmark slide-in */
+      gsap.from('.footer-name', {
+        scrollTrigger: {
+          trigger: '.site-footer',
+          start: 'top 90%'
+        },
+        x: -200, opacity: 0, duration: 1.5, ease: 'power4.out'
+      });
+    }
+  </script>
+
+  <!-- Nav scroll-tint + GitHub popup + hamburger -->
+  <script>
+    (function () {
+      /* Nav tint on scroll */
+      const header = document.getElementById('site-header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+      }, { passive: true });
+
+      /* Hamburger + drawer */
+      const btn     = document.getElementById('hamburger');
+      const drawer  = document.getElementById('nav-drawer');
+      const overlay = document.getElementById('drawer-overlay');
+
+      function openDrawer() {
+        drawer.classList.add('open');
+        overlay.classList.add('visible');
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('visible');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+
+      if (btn && drawer && overlay) {
+        btn.addEventListener('click', () =>
+          drawer.classList.contains('open') ? closeDrawer() : openDrawer()
+        );
+        overlay.addEventListener('click', closeDrawer);
+        drawer.querySelectorAll('a').forEach(a =>
+          a.addEventListener('click', closeDrawer)
+        );
+      }
+
+      /* GitHub popup */
+      const toggle   = document.getElementById('github-toggle');
+      const popup    = document.getElementById('github-popup');
+      const closeBtn = popup ? popup.querySelector('.popup-close') : null;
+
+      if (toggle && popup) {
+        toggle.addEventListener('click', () => popup.classList.toggle('visible'));
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => popup.classList.remove('visible'));
+      }
+    })();
+  </script>
+
+</body>
+</html>
