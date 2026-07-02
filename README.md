@@ -7,7 +7,8 @@ A bold, brutalist-inspired, single-page portfolio built with vanilla HTML, CSS, 
 ---
 
 ## Preview
-images/og-image.png
+<img width="1898" height="978" alt="Screenshot 2026-07-02 084533" src="https://github.com/user-attachments/assets/827f4a5c-06fe-4e53-96ce-91f3017ddcfa" />
+
 
 ---
 
