@@ -7,7 +7,7 @@ A bold, brutalist-inspired, single-page portfolio built with vanilla HTML, CSS, 
 ---
 
 ## Preview
-[images/og-image.png]
+images/og-image.png
 
 ---
 
