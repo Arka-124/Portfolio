@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Automated Toll Gate — a UV-sensor-triggered, servo-actuated gate system built on Arduino, by Arka Datta.">
+  <title>Automated Toll Gate — Arka</title>
+  <link rel="icon" type="image/png" href="../logo/Layerstop_4-removebg-preview.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../cursor.css">
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <script src="../cursor.js" defer></script>
+
+  <div class="wrapper">
+    <div class="grid-container">
+
+      <!-- Top bar: back arrow -->
+      <div class="header-bar">
+        <a href="../index.html#projects" aria-label="Back to Projects" style="color: var(--text); display: flex; align-items: center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </a>
+        <span class="header-tag">Robotics — Project 02</span>
+      </div>
+
+      <!-- Hero title -->
+      <div class="hero-title">
+        <h1>Automated Toll Gate</h1>
+        <p class="hero-subtitle">A sensor-triggered gate system that detects an approaching vehicle and opens automatically, then closes itself five seconds after the car has passed through.</p>
+      </div>
+
+      <!-- Sensing card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Sensing</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"></path>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">UV Sensor</p>
+          <p class="sub-text">A UV sensor watches the gate's approach zone and detects a vehicle the moment it breaks the sensing range — this is the sole trigger for the whole sequence.</p>
+        </div>
+      </div>
+
+      <!-- Actuation card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Actuation</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4"></path>
+            <path d="M12 18v4"></path>
+            <path d="M4.93 4.93l2.83 2.83"></path>
+            <path d="M16.24 16.24l2.83 2.83"></path>
+            <path d="M2 12h4"></path>
+            <path d="M18 12h4"></path>
+            <path d="M4.93 19.07l2.83-2.83"></path>
+            <path d="M16.24 7.76l2.83-2.83"></path>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">Servo Motor — 90&deg;</p>
+          <p class="sub-text">A servo motor acts as the gate arm, constrained to rotate exactly 90 degrees between closed and open — enough to lift the barrier clear without overshooting.</p>
+        </div>
+      </div>
+
+      <!-- Timing logic card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Timing Logic</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"></circle>
+            <polyline points="12 7 12 12 15 14"></polyline>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">5-Second Auto-Close</p>
+          <p class="sub-text">Once the UV sensor confirms the vehicle has passed, the Arduino holds the gate open for a fixed 5-second window before commanding the servo back to its closed position.</p>
+        </div>
+      </div>
+
+      <!-- Circuit card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Circuit</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <path d="M4 9h16"></path>
+            <path d="M9 4v16"></path>
+          </svg>
+          <p class="sub-text">The Arduino, UV sensor, and servo motor are wired together on a breadboard — a fully prototyped build with no custom PCB.</p>
+        </div>
+      </div>
+
+      <!-- Video demo -->
+      <div class="grid-item video-section">
+        <span class="section-title">Demo</span>
+        <div class="video-frame" id="video-frame">
+          <!--
+            TODO: replace this placeholder with the real demo video, e.g.
+              <video src="toll-gate-demo.mp4" controls playsinline></video>
+            or an embed:
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+          -->
+          <div class="video-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"></polygon>
+            </svg>
+            <span class="video-placeholder-text">Video Demo — Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom left: features -->
+      <div class="grid-item bottom-left">
+        <span class="section-title">Core Features</span>
+        <div class="feature-list">
+          <div class="feature-item"><span class="feature-index">01</span> UV sensor detects vehicle presence at the gate</div>
+          <div class="feature-item"><span class="feature-index">02</span> Arduino triggers the gate-open sequence on detection</div>
+          <div class="feature-item"><span class="feature-index">03</span> Servo motor rotates a fixed 90&deg; to raise the barrier</div>
+          <div class="feature-item"><span class="feature-index">04</span> 5-second delay before auto-closing after the car passes</div>
+          <div class="feature-item"><span class="feature-index">05</span> Full circuit prototyped on a breadboard</div>
+        </div>
+
+        <div class="tag-list" style="margin-top: 2rem;">
+          <span class="tag">Arduino</span>
+          <span class="tag">Servo Motor</span>
+          <span class="tag">UV Sensor</span>
+          <span class="tag">Breadboard</span>
+          <span class="tag">Embedded C++</span>
+        </div>
+      </div>
+
+      <!-- Bottom right: pull-quote + fluid glass -->
+      <div class="grid-item bottom-right"
+           style="flex-direction: column; justify-content: space-between; align-items: flex-start;">
+        <div style="max-width: 220px;">
+          <p class="section-title" style="margin-bottom: 0.5rem;">Build</p>
+          <p class="sub-text" style="margin-top: 0;">Prototype hardware build — Arduino, servo motor &amp; UV sensor, breadboard-wired.</p>
+        </div>
+
+        <div class="address-block" style="width: 100%;">
+          <p style="font-size: 0.6rem; text-align: right; margin-bottom: 0.5rem; color: #888;">EMBEDDED SYSTEMS</p>
+          <div class="serif-display">
+            sensing, then<br>
+            letting through
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 2rem; margin-top: 1rem; font-size: 0.6rem; text-transform: uppercase;">
+            <span>Built by<br>Arka</span>
+            <span>Robotics</span>
+          </div>
+        </div>
+
+        <!-- Fluid Glass background -->
+        <div id="fluid-glass-container"
+             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; z-index: 0; pointer-events: none;">
+        </div>
+
+        <script type="module">
+          import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+          window.addEventListener('load', () => {
+            const container = document.getElementById('fluid-glass-container');
+            if (!container) return;
+
+            const scene    = new THREE.Scene();
+            const width    = container.clientWidth  || 300;
+            const height   = container.clientHeight || 300;
+            const camera   = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+            camera.position.z = 10;
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            const dl = new THREE.DirectionalLight(0xffffff, 3);
+            dl.position.set(2, 5, 5); scene.add(dl);
+            const pl = new THREE.PointLight(0xffffff, 2);
+            pl.position.set(-2, -2, 5); scene.add(pl);
+
+            const mesh = new THREE.Mesh(
+              new THREE.TorusKnotGeometry(2.1, 0.7, 100, 16),
+              new THREE.MeshPhysicalMaterial({
+                color: 0xffffff, roughness: 0, metalness: 0,
+                transmission: 1, thickness: 5, ior: 1.15,
+                clearcoat: 1, clearcoatRoughness: 0
+              })
+            );
+            scene.add(mesh);
+
+            window.addEventListener('resize', () => {
+              const w = container.clientWidth, h = container.clientHeight;
+              camera.aspect = w / h;
+              camera.updateProjectionMatrix();
+              renderer.setSize(w, h);
+            });
+
+            (function animate() {
+              requestAnimationFrame(animate);
+              mesh.rotation.x += 0.005;
+              mesh.rotation.y += 0.005;
+              renderer.render(scene, camera);
+            })();
+          });
+        </script>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
