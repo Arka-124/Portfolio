@@ -463,6 +463,9 @@ a   { text-decoration: none; color: inherit; }
   border-color: rgba(0, 240, 255, 0.32);
 }
 
+/* Only show a pointer cursor once a card actually has a link set */
+.marquee-card[data-link]:not([data-link=""]) { cursor: pointer; }
+
 .marquee-card-tag {
   font-size: 0.68rem;
   text-transform: uppercase;
