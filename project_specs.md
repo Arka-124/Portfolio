@@ -24,6 +24,7 @@ The single-page application must include the following sections in order:
   * Project 2: Automated Toll Gate Development.
   * Project 3: Miniature 6 DOF Robotic Arm.
   * Project 4: Custom Car Brand Website.
+  * Project 5: Big Data Management Internship at IBM (SQL, Excel, Tableau).
 * **Experience & Education (Two-Column Layout):**
   * **Education:** 
     * College: University School of Automation and Robotics (B.Tech in Automation and Robotics, currently in 3rd Year).
@@ -32,6 +33,7 @@ The single-page application must include the following sections in order:
     * Sarcastic achievements (e.g., "Successfully Failed NEET" to pivot to robotics, high coffee-to-code conversion rate).
   * **Experience & Certifications:** 
     * AI/ML Intern at IIT Kanpur.
+    * Big Data Management Intern at IBM (SQL, Excel, Tableau).
     * Completed CS50x from Harvard University.
 * **My Creative Stack (Unified Logo Grid):** 
   * An interactive, highly responsive grid of technology logos with smooth hover scaling effects, featuring:
