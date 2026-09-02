@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compact 4-DOF Robotic Arm with mimic (master–slave) control using Arduino, potentiometers, and inverse kinematics, by Arka Datta.">
+  <title>4-DOF Robotic Arm — Arka</title>
+  <link rel="icon" type="image/png" href="../logo/Layerstop_4-removebg-preview.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../cursor.css">
+  <link rel="stylesheet" href="project.css">
+  <style>
+    /* Code block, scoped to this page */
+    .code-block {
+      background: #0a0a0a;
+      border: 1px solid var(--line);
+      padding: 1.25rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.68rem;
+      line-height: 1.6;
+      color: #8fd6ff;
+      overflow-x: auto;
+      white-space: pre;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .code-comment { color: #666; }
+  </style>
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <script src="../cursor.js" defer></script>
+
+  <div class="wrapper">
+    <div class="grid-container">
+
+      <!-- Top bar: back arrow -->
+      <div class="header-bar">
+        <a href="../index.html#projects" aria-label="Back to Projects" style="color: var(--text); display: flex; align-items: center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </a>
+        <span class="header-tag">Robotics — Project 03</span>
+      </div>
+
+      <!-- Hero title -->
+      <div class="hero-title">
+        <h1>4-DOF Robotic Arm</h1>
+        <p class="hero-subtitle">A compact, 3D-printed robotic arm controlled by a miniature mimic controller — potentiometer motion on the mini controller is captured and replicated on the main arm in real time.</p>
+      </div>
+
+      <!-- Objective card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Objective</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"></circle>
+          </svg>
+          <p class="sub-text">Design a compact 4-DOF arm from 3D-printed parts, drive it with a potentiometer-based master–slave mimic controller, and use it for basic pick-and-place tasks — a base system extendable toward feedback control and learning-based methods.</p>
+        </div>
+      </div>
+
+      <!-- Mimic control card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Mimic Control</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 1l4 4-4 4"></path>
+            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+            <path d="M7 23l-4-4 4-4"></path>
+            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">Master–Slave Mapping</p>
+          <p class="sub-text">A miniature controller with one potentiometer per joint generates a 0–5V analog signal per axis. Arduino reads each (0–1023), maps it to a servo angle (0–180°), and drives the corresponding joint — no programming needed during operation.</p>
+        </div>
+      </div>
+
+      <!-- Kinematics card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Kinematics</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+          <p class="sub-text">Forward and inverse kinematics are implemented in firmware — link lengths L1/L2/L3 map joint angles to XYZ gripper position and back, using the law of cosines with reachability checks for out-of-range targets.</p>
+        </div>
+      </div>
+
+      <!-- Actuators & driver card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Actuation</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="10" rx="2"></rect>
+            <line x1="6" y1="7" x2="6" y2="17"></line>
+            <line x1="10" y1="7" x2="10" y2="17"></line>
+            <line x1="14" y1="7" x2="14" y2="17"></line>
+            <line x1="18" y1="7" x2="18" y2="17"></line>
+          </svg>
+          <p class="sub-text">MG996R servos drive the shoulder/elbow/gripper joints, with a 32kg high-torque servo for base rotation. A PCA9685 16-channel driver converts I2C commands from the Arduino Uno into precise PWM signals for each motor.</p>
+        </div>
+      </div>
+
+      <!-- Signal flow / block diagram -->
+      <div class="grid-item detail-card wide">
+        <div class="label-row">
+          <span>Signal Flow</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <p class="detail-text" style="font-size: 1.4rem; letter-spacing: 0.02em;">
+            Potentiometers &rarr; Arduino Uno &rarr; PCA9685 &rarr; Servo Motors
+          </p>
+          <p class="sub-text">Input Stage: potentiometers capture per-joint position. Processing: Arduino Uno reads analog signals and computes movement commands. Driver: PCA9685 converts I2C to 16-channel PWM. Output: servos execute the angular movement — SDA on A4, SCL on A5, with a common ground tying Arduino, PCA9685, and the external servo power supply together.</p>
+        </div>
+      </div>
+
+      <!-- Firmware snippet -->
+      <div class="grid-item detail-card wide">
+        <div class="label-row">
+          <span>Firmware — Inverse Kinematics</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="code-block"><span class="code-comment">// Law of Cosines solves the elbow angle, with a reachability check</span>
+JointAngles calculateInverseKinematics(float x, float y, float z) {
+  <span class="code-comment">// Step A: Base Angle (Theta 1)</span>
+  float t1 = atan2(y, x);
+
+  <span class="code-comment">// Step B: Elbow Angle (Theta 3) via Law of Cosines</span>
+  float D = sqrt(r * r + z_off * z_off);
+  if (D > (L2 + L3) || D < abs(L2 - L3)) {
+    angles.reachable = false;   <span class="code-comment">// target out of range</span>
+    return angles;
+  }
+  float cos_theta3 = (D*D - L2*L2 - L3*L3) / (2 * L2 * L3);
+  float t3 = acos(constrain(cos_theta3, -1.0, 1.0));
+
+  <span class="code-comment">// Step C: Shoulder Angle (Theta 2), elbow-up configuration</span>
+  float t2 = alpha + beta;
+  ...
+}</div>
+      </div>
+
+      <!-- Video demo -->
+      <div class="grid-item video-section">
+        <span class="section-title">Demo</span>
+        <div class="video-frame" id="video-frame">
+          <!--
+            TODO: replace this placeholder with the real demo video, e.g.
+              <video src="robotic-arm-demo.mp4" controls playsinline></video>
+            or an embed:
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+          -->
+          <div class="video-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"></polygon>
+            </svg>
+            <span class="video-placeholder-text">Video Demo — Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom left: features -->
+      <div class="grid-item bottom-left">
+        <span class="section-title">Core Features</span>
+        <div class="feature-list">
+          <div class="feature-item"><span class="feature-index">01</span> Real-time potentiometer-driven mimic control</div>
+          <div class="feature-item"><span class="feature-index">02</span> 4-DOF motion: base, shoulder, elbow, gripper</div>
+          <div class="feature-item"><span class="feature-index">03</span> Forward &amp; inverse kinematics with reachability checks</div>
+          <div class="feature-item"><span class="feature-index">04</span> PCA9685-driven PWM for smooth, precise servo motion</div>
+          <div class="feature-item"><span class="feature-index">05</span> Push-button gripper control on a digital input pin</div>
+          <div class="feature-item"><span class="feature-index">06</span> 3D-printed PLA structure with a custom gripper</div>
+        </div>
+
+        <div class="tag-list" style="margin-top: 2rem;">
+          <span class="tag">Arduino Uno</span>
+          <span class="tag">PCA9685</span>
+          <span class="tag">MG996R Servos</span>
+          <span class="tag">Potentiometers</span>
+          <span class="tag">C++</span>
+          <span class="tag">3D Printing</span>
+        </div>
+      </div>
+
+      <!-- Bottom right: pull-quote + fluid glass -->
+      <div class="grid-item bottom-right"
+           style="flex-direction: column; justify-content: space-between; align-items: flex-start;">
+        <div style="max-width: 220px;">
+          <p class="section-title" style="margin-bottom: 0.5rem;">Future Scope</p>
+          <p class="sub-text" style="margin-top: 0;">Imitation learning, computer-vision-guided targeting, and semi-autonomous control blending mimic input with learned behavior.</p>
+        </div>
+
+        <div class="address-block" style="width: 100%;">
+          <p style="font-size: 0.6rem; text-align: right; margin-bottom: 0.5rem; color: #888;">MECHATRONICS</p>
+          <div class="serif-display">
+            move it once,<br>
+            it moves too
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 2rem; margin-top: 1rem; font-size: 0.6rem; text-transform: uppercase;">
+            <span>Built by<br>Arka</span>
+            <span>Robotics</span>
+          </div>
+        </div>
+
+        <!-- Fluid Glass background -->
+        <div id="fluid-glass-container"
+             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; z-index: 0; pointer-events: none;">
+        </div>
+
+        <script type="module">
+          import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+          window.addEventListener('load', () => {
+            const container = document.getElementById('fluid-glass-container');
+            if (!container) return;
+
+            const scene    = new THREE.Scene();
+            const width    = container.clientWidth  || 300;
+            const height   = container.clientHeight || 300;
+            const camera   = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+            camera.position.z = 10;
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            const dl = new THREE.DirectionalLight(0xffffff, 3);
+            dl.position.set(2, 5, 5); scene.add(dl);
+            const pl = new THREE.PointLight(0xffffff, 2);
+            pl.position.set(-2, -2, 5); scene.add(pl);
+
+            const mesh = new THREE.Mesh(
+              new THREE.TorusKnotGeometry(2.1, 0.7, 100, 16),
+              new THREE.MeshPhysicalMaterial({
+                color: 0xffffff, roughness: 0, metalness: 0,
+                transmission: 1, thickness: 5, ior: 1.15,
+                clearcoat: 1, clearcoatRoughness: 0
+              })
+            );
+            scene.add(mesh);
+
+            window.addEventListener('resize', () => {
+              const w = container.clientWidth, h = container.clientHeight;
+              camera.aspect = w / h;
+              camera.updateProjectionMatrix();
+              renderer.setSize(w, h);
+            });
+
+            (function animate() {
+              requestAnimationFrame(animate);
+              mesh.rotation.x += 0.005;
+              mesh.rotation.y += 0.005;
+              renderer.render(scene, camera);
+            })();
+          });
+        </script>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
