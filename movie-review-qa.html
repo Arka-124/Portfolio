@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI Chatbot for Movie Reviews — a FastAPI + TF-IDF powered Q&A engine over movie review data, by Arka Datta.">
+  <title>Movie Review Q&amp;A — Arka</title>
+  <link rel="icon" type="image/png" href="../logo/Layerstop_4-removebg-preview.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../cursor.css">
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <script src="../cursor.js" defer></script>
+
+  <div class="wrapper">
+    <div class="grid-container">
+
+      <!-- Top bar: back arrow -->
+      <div class="header-bar">
+        <a href="../index.html#projects" aria-label="Back to Projects" style="color: var(--text); display: flex; align-items: center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </a>
+        <span class="header-tag">AI / ML — Project 01</span>
+      </div>
+
+      <!-- Hero title -->
+      <div class="hero-title">
+        <h1>Movie Review Q&amp;A</h1>
+        <p class="hero-subtitle">A conversational agent that answers natural-language questions about films by matching them against a corpus of real movie reviews. Built during the IIT Kanpur AI/ML Internship.</p>
+      </div>
+
+      <!-- Overview card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Overview</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="8" y1="13" x2="16" y2="13"></line>
+            <line x1="8" y1="17" x2="16" y2="17"></line>
+          </svg>
+          <p class="sub-text">A FastAPI backend that ingests a movie review dataset, cleans and vectorizes the text, then answers free-form questions by returning the most semantically relevant review.</p>
+        </div>
+      </div>
+
+      <!-- Matching engine card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Matching Engine</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">TF-IDF + Cosine Similarity</p>
+          <p class="sub-text">User queries are vectorized with scikit-learn's TF-IDF and compared against the review corpus via cosine similarity to surface the closest match.</p>
+        </div>
+      </div>
+
+      <!-- Data pipeline card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Data Pipeline</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg>
+          <p class="sub-text">Missing reviews are asynchronously scraped from source URLs with aiohttp and BeautifulSoup (rotating user agents via fake-useragent), then cleaned and cached before vectorization.</p>
+        </div>
+      </div>
+
+      <!-- Interface card -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Interface</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <circle cx="6" cy="6.5" r="0.6" fill="currentColor" stroke="none"></circle>
+          </svg>
+          <p class="sub-text">A React chat component (shadcn/ui + Tailwind) sends queries to the FastAPI <code>/query/</code> endpoint and renders the matched review as a chat response.</p>
+        </div>
+      </div>
+
+      <!-- Bottom left: features -->
+      <div class="grid-item bottom-left">
+        <span class="section-title">Core Features</span>
+        <div class="feature-list">
+          <div class="feature-item"><span class="feature-index">01</span> Ingests and cleans a CSV movie review dataset</div>
+          <div class="feature-item"><span class="feature-index">02</span> Async-scrapes missing reviews from source URLs</div>
+          <div class="feature-item"><span class="feature-index">03</span> TF-IDF vectorization with stop-word filtering</div>
+          <div class="feature-item"><span class="feature-index">04</span> Cosine-similarity ranking against the corpus</div>
+          <div class="feature-item"><span class="feature-index">05</span> REST endpoint (<code>GET /query/</code>) serving JSON</div>
+          <div class="feature-item"><span class="feature-index">06</span> CORS-enabled for a decoupled React frontend</div>
+        </div>
+
+        <div class="tag-list" style="margin-top: 2rem;">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">aiohttp</span>
+          <span class="tag">BeautifulSoup</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+
+      <!-- Bottom right: pull-quote + repo link + fluid glass -->
+      <div class="grid-item bottom-right"
+           style="flex-direction: column; justify-content: space-between; align-items: flex-start;">
+        <div style="max-width: 220px;">
+          <p class="section-title" style="margin-bottom: 0.5rem;">Source</p>
+          <a href="https://github.com/Arka-124/movie-rev-qa" target="_blank" rel="noopener" class="repo-link">
+            GITHUB: <span>/movie-rev-qa</span>
+          </a>
+        </div>
+
+        <div class="address-block" style="width: 100%;">
+          <p style="font-size: 0.6rem; text-align: right; margin-bottom: 0.5rem; color: #888;">AI / ML INTERNSHIP</p>
+          <div class="serif-display">
+            teaching machines<br>
+            to read reviews
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 2rem; margin-top: 1rem; font-size: 0.6rem; text-transform: uppercase;">
+            <span>Built by<br>Arka</span>
+            <span>IIT Kanpur</span>
+          </div>
+        </div>
+
+        <!-- Fluid Glass background -->
+        <div id="fluid-glass-container"
+             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; z-index: 0; pointer-events: none;">
+        </div>
+
+        <script type="module">
+          import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+          window.addEventListener('load', () => {
+            const container = document.getElementById('fluid-glass-container');
+            if (!container) return;
+
+            const scene    = new THREE.Scene();
+            const width    = container.clientWidth  || 300;
+            const height   = container.clientHeight || 300;
+            const camera   = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+            camera.position.z = 10;
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            const dl = new THREE.DirectionalLight(0xffffff, 3);
+            dl.position.set(2, 5, 5); scene.add(dl);
+            const pl = new THREE.PointLight(0xffffff, 2);
+            pl.position.set(-2, -2, 5); scene.add(pl);
+
+            const mesh = new THREE.Mesh(
+              new THREE.TorusKnotGeometry(2.1, 0.7, 100, 16),
+              new THREE.MeshPhysicalMaterial({
+                color: 0xffffff, roughness: 0, metalness: 0,
+                transmission: 1, thickness: 5, ior: 1.15,
+                clearcoat: 1, clearcoatRoughness: 0
+              })
+            );
+            scene.add(mesh);
+
+            window.addEventListener('resize', () => {
+              const w = container.clientWidth, h = container.clientHeight;
+              camera.aspect = w / h;
+              camera.updateProjectionMatrix();
+              renderer.setSize(w, h);
+            });
+
+            (function animate() {
+              requestAnimationFrame(animate);
+              mesh.rotation.x += 0.005;
+              mesh.rotation.y += 0.005;
+              renderer.render(scene, camera);
+            })();
+          });
+        </script>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
