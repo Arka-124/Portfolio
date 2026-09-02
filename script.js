@@ -16,4 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+  /* Project cards — click to open detail page
+     Set each card's `data-link` attribute (in index.html) to its detail
+     page URL. Cards with no link set are left as-is (no navigation). */
+  document.querySelectorAll('.project-card[data-link], .marquee-card[data-link]').forEach(card => {
+    const url = card.getAttribute('data-link');
+    if (!url) return; // no link set yet — skip
+
+    card.addEventListener('click', () => {
+      window.location.href = url;
+    });
+  });
+
 });
