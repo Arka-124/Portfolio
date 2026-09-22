@@ -4,9 +4,9 @@ const cursorDot     = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 
 if (!isTouchDevice) {
-  /* All interactive elements across index.html and contact.html */
+  /* All interactive elements across index.html, contact.html, and project subpages */
   const hoverTriggers = document.querySelectorAll(
-    'a, button, .project-card, .stack-icon-item, .hero-chip, ' +
+    'a, button, video, .project-card, .stack-icon-item, .hero-chip, ' +
     '.marquee-card, #glass-button-container, #github-toggle'
   );
 

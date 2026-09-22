@@ -49,7 +49,14 @@ A bold, brutalist-inspired, single-page portfolio built with vanilla HTML, CSS, 
 ├── cursor.css             # Custom cursor styles
 ├── cursor.js              # Custom cursor behavior
 ├── script.js               # Scroll-reveal + footer year logic
-├── images/                  # Photos, backgrounds, icons
+├── projects/               # Detailed project deep-dive pages
+│   ├── project.css         # Shared brutalist layout for project detail pages
+│   ├── fogbot.html         # FogBot — Autonomous Pilot Rover & IoT Command Center (with video demo)
+│   ├── robotic-arm.html    # Miniature 4-DOF Robotic Arm with mimic control
+│   ├── toll-gate.html      # Automated Toll Gate System
+│   ├── movie-review-qa.html # AI Chatbot for Movie Reviews
+│   └── vm-automobiles.html # VM Automobiles Luxury Website
+├── images/                  # Photos, backgrounds, icons, FogBot.mp4 demo
 └── logo/                     # Favicon / logo assets
 ```
 
@@ -77,8 +84,8 @@ npx serve
 ## Sections
 
 1. **Hero** — Name, role, and quick tech chips
-2. **Marquee** — Scrolling banner of core technologies
-3. **Featured Projects** — AI chatbot, automated toll gate, 6-DOF robotic arm, custom car brand site
+2. **Marquee** — Scrolling banner of core projects and technologies
+3. **Featured Projects** — FogBot (Autonomous Pilot Rover & IoT Command Center), AI chatbot, automated toll gate, 4-DOF robotic arm, custom car brand site
 4. **Experience & Education** — Academic background, achievements, internships, certifications
 5. **Creative Stack** — Interactive logo grid of tools and languages
 6. **Footer** — Contact links (GitHub, LinkedIn, Email)
