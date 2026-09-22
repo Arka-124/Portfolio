@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FogBot — Autonomous Pilot Rover &amp; IoT Command Center for zero-visibility open-cast mine haul roads. Smart India Hackathon 2026 (SIH26007 - NMDC Limited) by Arka Datta.">
+  <title>FogBot — Autonomous Pilot Rover | Arka</title>
+  <link rel="icon" type="image/png" href="../logo/Layerstop_4-removebg-preview.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../cursor.css">
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <script src="../cursor.js" defer></script>
+
+  <div class="wrapper">
+    <div class="grid-container">
+
+      <!-- Top bar: back arrow & project indicator -->
+      <div class="header-bar">
+        <a href="../index.html#projects" aria-label="Back to Projects" style="color: var(--text); display: flex; align-items: center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </a>
+        <span class="header-tag">Robotics &amp; IoT — SIH 2026 (NMDC)</span>
+      </div>
+
+      <!-- Hero title & overview -->
+      <div class="hero-title">
+        <h1>FogBot</h1>
+        <p class="hero-subtitle">Autonomous Pilot Rover &amp; IoT Command Center for Zero-Visibility Mine Haul Roads &mdash; Smart India Hackathon 2026 (SIH26007 &bull; NMDC Limited). Developed by Team Track Decoders &bull; Arka Datta (Full-Stack Developer &amp; Robotics Systems Architect).</p>
+      </div>
+
+      <!-- Card 1: Problem Statement -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Problem Solved</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">NMDC Bailadila Haul Roads</p>
+          <p class="sub-text">Monsoon fog reduces visibility to 3–5m on steep hilltop roads, costing 50–60 operational days annually and putting 100t+ dumper trucks at risk of catastrophic collisions. Truck-mounted systems fail due to extreme vehicle inertia, violent vibration, and optical blinding.</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Leading Pilot Rover Architecture -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Architecture</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a10 10 0 0 1 10 10"></path>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+            <line x1="12" y1="2" x2="12" y2="6"></line>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">Leading Scout Rover</p>
+          <p class="sub-text">An agile autonomous scout rover navigates 15–25m ahead of heavy dumpers, acting as forward eyes with 360&deg; LiDAR, optical camera, ultrasonic, and infrared sensor fusion to spot terrain hazards and obstacles long before the dumper reaches them.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: 3D WebGL Digital Twin -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Digital Twin</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">Three.js WebGL Simulation</p>
+          <p class="sub-text">Interactive 3D digital twin featuring dynamic volumetric fog shaders (FogExp2), forward projector fog lights, and high-intensity pulsing rear hazard strobes engineered to provide high-visibility visual guidance for trailing dumper operators.</p>
+        </div>
+      </div>
+
+      <!-- Card 4: AI Risk & Speed Governor -->
+      <div class="grid-item detail-card">
+        <div class="label-row">
+          <span>Active Safety</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v4M4.93 4.93l2.83 2.83M2 12h4M19.07 4.93l-2.83 2.83M22 12h-4"></path>
+            <circle cx="12" cy="14" r="8"></circle>
+            <polyline points="12 14 15 11"></polyline>
+          </svg>
+          <p class="detail-text" style="font-size: 1rem;">Speed Governor &amp; E-STOP</p>
+          <p class="sub-text">Uses camera detection confidence as a live proxy for fog density, automatically throttling safe recommended speeds between 0 and 35 km/h, backed by an instant emergency E-STOP broadcast interlock that halts the entire convoy when danger is detected.</p>
+        </div>
+      </div>
+
+      <!-- Card 5: Wide - Real-Time Command Center Telemetry -->
+      <div class="grid-item detail-card wide">
+        <div class="label-row">
+          <span>Command Center Engines</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <p class="detail-text" style="font-size: 1.35rem; letter-spacing: 0.02em;">
+            1,500-Point LiDAR Radar Scatter &bull; Live Convoy TTC Mapping
+          </p>
+          <p class="sub-text">Dual custom HTML5 2D Canvas engines rendering high-frequency sensor streams: an omnidirectional 1,500-point LiDAR radar scatter plot with real-time fog cutoff attenuation alongside an interactive live Convoy Map computing headway distance and Time-To-Collision (TTC) to eliminate tailgating risks in zero visibility.</p>
+        </div>
+      </div>
+
+      <!-- Card 6: Wide - Production Full-Stack & System Resiliency -->
+      <div class="grid-item detail-card wide">
+        <div class="label-row">
+          <span>Full-Stack &amp; Cloud Resiliency</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="content-main">
+          <p class="detail-text" style="font-size: 1.35rem; letter-spacing: 0.02em;">
+            Express.js &bull; Dockerized MySQL &bull; Zero-FOUC Theme Sync
+          </p>
+          <p class="sub-text">Engineered with an Express.js backend, Google reCAPTCHA v2 validation, bcrypt auth, MySQL connection pooling with Docker, and a resilient in-memory fallback store for zero-config deployments on Render and Railway. Features a zero-FOUC Dark/Light/System theme engine that synchronizes both DOM styling and 3D Three.js lighting and shader materials in real time.</p>
+        </div>
+      </div>
+
+      <!-- Video Demonstration -->
+      <div class="grid-item video-section">
+        <span class="section-title">Live System Demonstration</span>
+        <div class="video-frame" id="video-frame">
+          <video controls playsinline preload="metadata" poster="../images/fogbot-poster.jpg">
+            <source src="../images/FogBot.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <!-- Bottom left: features & tag list -->
+      <div class="grid-item bottom-left">
+        <span class="section-title">Key Architectural Highlights</span>
+        <div class="feature-list">
+          <div class="feature-item"><span class="feature-index">01</span> Leading Pilot Rover: Autonomous advance scout 15–25m ahead with 360&deg; LiDAR, camera, ultrasonic &amp; IR fusion</div>
+          <div class="feature-item"><span class="feature-index">02</span> 3D WebGL Digital Twin: Three.js simulation with dynamic FogExp2 volumetric shaders &amp; pulsing rear hazard strobes</div>
+          <div class="feature-item"><span class="feature-index">03</span> Real-Time Telemetry: Dual Canvas engines displaying 1,500-pt LiDAR radar scatter &amp; live convoy Time-To-Collision (TTC)</div>
+          <div class="feature-item"><span class="feature-index">04</span> AI Risk &amp; Speed Governor: Automatic speed throttling (0–35 km/h) based on fog density &amp; instant E-STOP interlock</div>
+          <div class="feature-item"><span class="feature-index">05</span> Production Full-Stack: Express.js, Dockerized MySQL pooling, reCAPTCHA v2, and resilient in-memory cloud fallback</div>
+          <div class="feature-item"><span class="feature-index">06</span> Zero-FOUC Theme Engine: Dark/Light/System switcher synchronized across DOM CSS and WebGL shader materials</div>
+        </div>
+
+        <div class="tag-list" style="margin-top: 2rem;">
+          <span class="tag">Three.js</span>
+          <span class="tag">WebGL</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express.js</span>
+          <span class="tag">JavaScript (ES6+)</span>
+          <span class="tag">HTML5 Canvas</span>
+          <span class="tag">CSS3 / Glassmorphism</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Docker</span>
+          <span class="tag">esbuild</span>
+          <span class="tag">Google reCAPTCHA v2</span>
+          <span class="tag">IoT Telemetry</span>
+          <span class="tag">Sensor Fusion</span>
+        </div>
+      </div>
+
+      <!-- Bottom right: pull-quote + links + fluid glass -->
+      <div class="grid-item bottom-right"
+           style="flex-direction: column; justify-content: space-between; align-items: flex-start;">
+        <div style="max-width: 280px; z-index: 2;">
+          <p class="section-title" style="margin-bottom: 0.5rem;">Deployments</p>
+          <a href="https://fogbot.onrender.com" target="_blank" rel="noopener noreferrer" class="repo-link" style="margin-bottom: 0.5rem;">
+            LIVE DEMO: <span>fogbot.onrender.com</span> &rarr;
+          </a>
+          <a href="https://github.com/Arka-124/FogBot" target="_blank" rel="noopener noreferrer" class="repo-link">
+            GITHUB: <span>/FogBot</span> &rarr;
+          </a>
+        </div>
+
+        <div class="address-block" style="width: 100%; z-index: 2;">
+          <p style="font-size: 0.6rem; text-align: right; margin-bottom: 0.5rem; color: #888;">SIH 2026 &mdash; NMDC LIMITED</p>
+          <div class="serif-display">
+            clearing the fog,<br>
+            protecting the haul
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 2rem; margin-top: 1rem; font-size: 0.6rem; text-transform: uppercase;">
+            <span>Built by<br>Arka</span>
+            <span>Team Track Decoders</span>
+          </div>
+        </div>
+
+        <!-- Fluid Glass background -->
+        <div id="fluid-glass-container"
+             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; z-index: 0; pointer-events: none;">
+        </div>
+
+        <script type="module">
+          import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+          window.addEventListener('load', () => {
+            const container = document.getElementById('fluid-glass-container');
+            if (!container) return;
+
+            const scene    = new THREE.Scene();
+            const width    = container.clientWidth  || 300;
+            const height   = container.clientHeight || 300;
+            const camera   = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+            camera.position.z = 10;
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            const dl = new THREE.DirectionalLight(0xffffff, 3);
+            dl.position.set(2, 5, 5); scene.add(dl);
+            const pl = new THREE.PointLight(0x00f0ff, 2.5);
+            pl.position.set(-2, -2, 5); scene.add(pl);
+
+            const mesh = new THREE.Mesh(
+              new THREE.TorusKnotGeometry(2.1, 0.7, 100, 16),
+              new THREE.MeshPhysicalMaterial({
+                color: 0xffffff, roughness: 0, metalness: 0,
+                transmission: 1, thickness: 5, ior: 1.15,
+                clearcoat: 1, clearcoatRoughness: 0
+              })
+            );
+            scene.add(mesh);
+
+            window.addEventListener('resize', () => {
+              const w = container.clientWidth, h = container.clientHeight;
+              camera.aspect = w / h;
+              camera.updateProjectionMatrix();
+              renderer.setSize(w, h);
+            });
+
+            (function animate() {
+              requestAnimationFrame(animate);
+              mesh.rotation.x += 0.005;
+              mesh.rotation.y += 0.005;
+              renderer.render(scene, camera);
+            })();
+          });
+        </script>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
