@@ -20,7 +20,7 @@ The single-page application must include the following sections in order:
 * **Hero Section:** Massive typography stating "Arka Datta". Subtitle: "Full-Stack Web Developer & Robotics Engineer". Include a clean "Get in touch" call-to-action.
 * **Scrolling Marquee:** An infinite horizontal scrolling banner listing core technologies: MongoDB • Express.js • Node.js • React • Python • Java • C • C++
 * **Featured Projects (Grid Layout):**
-  * Project 1: FogBot — Autonomous Pilot Rover & IoT Command Center (Smart India Hackathon 2026 - NMDC Limited).
+  * Project 1: FogBot — Autonomous Pilot Rover & IoT Command Center (Smart India Hackathon 2026 - NMDC Limited. Team Track Decoders: Arka Datta, Nihal Singh, Divyanshu, Deepak Jaish, Yuvraj, Pooja Thakur).
   * Project 2: AI Chatbot for Movie Reviews (Developed during IIT Kanpur AI/ML Internship).
   * Project 3: Automated Toll Gate Development.
   * Project 4: Miniature 4 DOF Robotic Arm.

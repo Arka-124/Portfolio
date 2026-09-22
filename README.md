@@ -85,7 +85,7 @@ npx serve
 
 1. **Hero** — Name, role, and quick tech chips
 2. **Marquee** — Scrolling banner of core projects and technologies
-3. **Featured Projects** — FogBot (Autonomous Pilot Rover & IoT Command Center), AI chatbot, automated toll gate, 4-DOF robotic arm, custom car brand site
+3. **Featured Projects** — FogBot (Autonomous Pilot Rover & IoT Command Center — Smart India Hackathon 2026, Team Track Decoders: Arka Datta, Nihal Singh, Divyanshu, Deepak Jaish, Yuvraj, Pooja Thakur), AI chatbot, automated toll gate, 4-DOF robotic arm, custom car brand site
 4. **Experience & Education** — Academic background, achievements, internships, certifications
 5. **Creative Stack** — Interactive logo grid of tools and languages
 6. **Footer** — Contact links (GitHub, LinkedIn, Email)
