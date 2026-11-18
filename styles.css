@@ -229,7 +229,8 @@ a   { text-decoration: none; color: inherit; }
   border-radius: 0 0 60px 60px;
   overflow: hidden;
   position: relative;
-  --hero-parallax: 0px;
+  --hero-bg-y: 0px;
+  --hero-cutout-y: 0px;
 }
 
 /* Inset vignette — fades in on scroll */
@@ -265,13 +266,15 @@ a   { text-decoration: none; color: inherit; }
   mask-image: radial-gradient(ellipse at 50% 50%, black 25%, transparent 75%);
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
+  transform: translate3d(0, var(--hero-bg-y, 0px), 0);
 }
 
 .hero-radar {
   position: absolute;
   top: 46%;
   right: 18%;
-  transform: translate(50%, -50%);
+  transform: translate3d(50%, calc(-50% + var(--hero-bg-y, 0px)), 0);
   width: 520px;
   height: 520px;
   pointer-events: none;
@@ -279,6 +282,7 @@ a   { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: transform;
 }
 
 .radar-ring {
@@ -321,7 +325,7 @@ a   { text-decoration: none; color: inherit; }
   position: absolute;
   top: 6.5rem;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, var(--hero-bg-y, 0px), 0);
   font-family: 'Space Grotesk', monospace;
   font-size: 0.68rem;
   letter-spacing: 2px;
@@ -334,6 +338,7 @@ a   { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 0.75rem;
   text-transform: uppercase;
+  will-change: transform;
 }
 
 .coords-sep {
@@ -422,7 +427,7 @@ a   { text-decoration: none; color: inherit; }
   position: absolute;
   bottom: 0;
   left: 76%;
-  transform: translateX(-50%) translateY(var(--hero-parallax));
+  transform: translate3d(-50%, var(--hero-cutout-y, 0px), 0);
   width: min(46vw, 620px);
   height: 96%;
   background: url('images/hero-photo.png') no-repeat bottom center;
@@ -431,6 +436,7 @@ a   { text-decoration: none; color: inherit; }
   z-index: 1;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 8%);
+  will-change: transform;
 }
 
 /* 2-column hero grid */
@@ -921,8 +927,15 @@ a   { text-decoration: none; color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .about-bg-layer {
+  .about-bg-layer,
+  .hero-grid,
+  .hero-radar,
+  .hero-coords {
     transform: none !important;
+    will-change: auto !important;
+  }
+  .hero-cutout {
+    transform: translateX(-50%) !important;
     will-change: auto !important;
   }
 }
@@ -1384,6 +1397,14 @@ a   { text-decoration: none; color: inherit; }
 
 
 @media (max-width: 960px) {
+  .hero-grid {
+    transform: none !important;
+    will-change: auto !important;
+  }
+  .hero-cutout {
+    transform: translateX(-50%) !important;
+    will-change: auto !important;
+  }
   .hero-radar,
   .hero-coords,
   .floating-badge {

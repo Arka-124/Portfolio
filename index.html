@@ -645,18 +645,6 @@
         .to(heroText,  { y: -120, scale: 0.92, opacity: 0.85, ease: 'power2.out' }, 0)
         .to(heroRight, { y: -80, opacity: 0,   ease: 'power2.out' }, 0);
 
-        /* CSS custom property for cutout parallax */
-        gsap.to(hero, {
-          scrollTrigger: {
-            trigger: hero,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-          },
-          '--hero-parallax': '120px'
-        });
-
-        /* hero-active inset vignette */
         ScrollTrigger.create({
           trigger: hero,
           start: 'top top',
@@ -682,22 +670,37 @@
   <!-- Nav scroll-tint + GitHub popup + hamburger -->
   <script>
     (function () {
-      /* Parallax speed constant for About background (0 = static, 1 = normal scroll, 0.5 = half speed) */
       const SPEED = 0.5;
 
       const header = document.getElementById('site-header');
+      const hero = document.getElementById('hero');
       const aboutSection = document.getElementById('experience');
       const aboutBgLayer = document.getElementById('about-bg-layer');
 
       let ticking = false;
 
       function updateOnScroll() {
-        /* Nav tint on scroll */
         if (header) {
           header.classList.toggle('scrolled', window.scrollY > 60);
         }
 
-        /* About background parallax reveal */
+        if (hero) {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth <= 960) {
+            hero.style.setProperty('--hero-bg-y', '0px');
+            hero.style.setProperty('--hero-cutout-y', '0px');
+          } else {
+            const heroRect = hero.getBoundingClientRect();
+            if (heroRect.bottom > 0 && heroRect.top <= 0) {
+              const scrolled = -heroRect.top;
+              hero.style.setProperty('--hero-bg-y', `${scrolled * 0.35}px`);
+              hero.style.setProperty('--hero-cutout-y', `${scrolled * 0.22}px`);
+            } else if (heroRect.top > 0) {
+              hero.style.setProperty('--hero-bg-y', '0px');
+              hero.style.setProperty('--hero-cutout-y', '0px');
+            }
+          }
+        }
+
         if (aboutSection && aboutBgLayer) {
           if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             aboutBgLayer.style.transform = '';
@@ -707,16 +710,13 @@
             const rect = aboutSection.getBoundingClientRect();
 
             if (rect.bottom <= 0) {
-              // Section is completely above viewport: fully hide layer
               aboutBgLayer.style.visibility = 'hidden';
               aboutBgLayer.style.opacity = '0';
             } else if (rect.top >= window.innerHeight) {
-              // Section is below viewport: reset and hide
               aboutBgLayer.style.transform = 'translate3d(0, 0px, 0)';
               aboutBgLayer.style.visibility = 'hidden';
               aboutBgLayer.style.opacity = '0';
             } else {
-              // Section is in viewport: visible and parallax transformed
               aboutBgLayer.style.visibility = 'visible';
               aboutBgLayer.style.opacity = '1';
               const scrolledPx = Math.max(-rect.top, 0);
@@ -748,7 +748,6 @@
         requestAnimationFrame(updateOnScroll);
       });
 
-      // Ensure anchor navigation updates visibility even on fast jumps
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', () => {
           setTimeout(updateOnScroll, 100);
@@ -757,7 +756,6 @@
         });
       });
 
-      // Initial execution
       updateOnScroll();
 
       /* Hamburger + drawer */
