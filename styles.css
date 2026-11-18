@@ -256,6 +256,146 @@ a   { text-decoration: none; color: inherit; }
   z-index: 0;
 }
 
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0, 229, 255, 0.16) 1.2px, transparent 1.2px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 50%, black 25%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-radar {
+  position: absolute;
+  top: 46%;
+  right: 18%;
+  transform: translate(50%, -50%);
+  width: 520px;
+  height: 520px;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.radar-ring.ring-1 {
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(0, 229, 255, 0.14);
+  animation: radar-spin 30s linear infinite;
+}
+
+.radar-ring.ring-2 {
+  width: 360px;
+  height: 360px;
+  border: 1px dashed rgba(0, 229, 255, 0.16);
+  animation: radar-spin-rev 45s linear infinite;
+}
+
+.radar-ring.ring-3 {
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(0, 229, 255, 0.08);
+}
+
+@keyframes radar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes radar-spin-rev {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.hero-coords {
+  position: absolute;
+  top: 6.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 2;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-transform: uppercase;
+}
+
+.coords-sep {
+  opacity: 0.6;
+}
+
+.floating-badge {
+  position: absolute;
+  top: 26%;
+  right: 36%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: 14px;
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.1);
+  animation: float-badge 4.5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes float-badge {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+.floating-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00e5ff;
+  box-shadow: 0 0 10px #00e5ff;
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.floating-badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-badge-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #00e5ff;
+  font-family: 'Space Grotesk', monospace;
+  text-transform: uppercase;
+}
+
+.floating-badge-val {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f0ede8;
+  margin-top: 0.15rem;
+  white-space: nowrap;
+}
+
 /* Radar / sensor halo — on-theme motion */
 .hero-halo {
   position: absolute;
@@ -355,6 +495,124 @@ a   { text-decoration: none; color: inherit; }
 }
 
 .hero-chip svg { flex-shrink: 0; color: var(--accent); }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.24);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(240, 237, 232, 0.92);
+  margin-bottom: 1.25rem;
+  width: fit-content;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00e5ff;
+  box-shadow: 0 0 10px #00e5ff;
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+  0%   { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 4px #00e5ff; }
+  50%  { transform: scale(1.15); opacity: 1; box-shadow: 0 0 12px #00e5ff; }
+  100% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 4px #00e5ff; }
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-ctas .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #00e5ff;
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+  transition: transform var(--speed) ease, box-shadow var(--speed) ease;
+}
+
+.hero-ctas .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.45);
+}
+
+.hero-ctas .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  transition: transform var(--speed) ease, border-color var(--speed) ease, background var(--speed) ease;
+}
+
+.hero-ctas .btn-ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 229, 255, 0.4);
+  background: rgba(0, 229, 255, 0.08);
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 480px;
+}
+
+.hero-stats .stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-stats .stat-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f0ede8;
+  letter-spacing: -0.3px;
+}
+
+.hero-stats .stat-label {
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+  white-space: nowrap;
+}
+
+.hero-stats .stat-divider {
+  width: 1px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
 
 /* Glass pitch panel — right column */
 .hero-pitch {
@@ -1122,4 +1380,17 @@ a   { text-decoration: none; color: inherit; }
   .projects-grid { grid-template-columns: 1fr; }
   .stack-icon-grid { grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); }
   .footer-name { font-size: clamp(3rem, 18vw, 14rem); }
+}
+
+
+@media (max-width: 960px) {
+  .hero-radar,
+  .hero-coords,
+  .floating-badge {
+    display: none !important;
+  }
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+  }
 }
