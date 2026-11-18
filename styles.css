@@ -493,6 +493,7 @@ a   { text-decoration: none; color: inherit; }
 .section-container {
   padding: 5rem 8%;
   border-bottom: 1px solid var(--border);
+  background-color: var(--bg);
 }
 
 .section-title {
@@ -630,23 +631,42 @@ a   { text-decoration: none; color: inherit; }
    ABOUT / EXPERIENCE — 3-COLUMN
    ============================================================ */
 #experience {
+  position: relative;
+  z-index: 1;
   padding: 0;
+  overflow: visible;
 }
 
 #experience .about-grid {
   border-radius: 0;
+  overflow: visible;
 }
 
 .about-grid {
   position: relative;
   aspect-ratio: 16 / 9;
-  overflow: hidden;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0;
   padding: 3rem;
+}
+
+/* Background parallax wrapper layer */
+.about-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: transform;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-bg-layer {
+    transform: none !important;
+    will-change: auto !important;
+  }
 }
 
 /* Full-bleed background photo layer — drop an <img> or background-image here */
@@ -748,6 +768,13 @@ a   { text-decoration: none; color: inherit; }
 /* ============================================================
    TECH STACK — 2-COLUMN
    ============================================================ */
+#stack {
+  position: relative;
+  z-index: 10;
+  background-color: var(--bg);
+  box-shadow: 0 -25px 50px rgba(0, 0, 0, 0.85);
+}
+
 #stack .section-title { margin-bottom: 2.5rem; }
 
 .stack-inner {
@@ -816,7 +843,9 @@ a   { text-decoration: none; color: inherit; }
    FOOTER
    ============================================================ */
 .site-footer {
-  background: #000;
+  position: relative;
+  z-index: 10;
+  background-color: var(--bg);
   border-top: 1px solid var(--border);
   overflow: hidden;
 }

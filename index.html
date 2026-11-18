@@ -351,7 +351,9 @@
         </div>
 
         <!-- Full-bleed background photo (drop an <img> in here, e.g. <img src="images/profile.jpg" alt="Arka Datta">) -->
-        <div class="about-photo-bg" id="about-photo-bg"></div>
+        <div class="about-bg-layer" id="about-bg-layer">
+          <div class="about-photo-bg" id="about-photo-bg"></div>
+        </div>
 
         <!-- Right: Languages / Tools / Contact / Interests -->
         <div class="about-right">
@@ -394,7 +396,7 @@
     <!-- ============================================================
          TECH STACK — 2-COLUMN
          ============================================================ -->
-    <section id="stack" class="section-container reveal">
+    <section id="stack" class="section-container">
       <h2 class="section-title">Stack</h2>
       <div class="stack-inner">
 
@@ -636,11 +638,83 @@
   <!-- Nav scroll-tint + GitHub popup + hamburger -->
   <script>
     (function () {
-      /* Nav tint on scroll */
+      /* Parallax speed constant for About background (0 = static, 1 = normal scroll, 0.5 = half speed) */
+      const SPEED = 0.5;
+
       const header = document.getElementById('site-header');
+      const aboutSection = document.getElementById('experience');
+      const aboutBgLayer = document.getElementById('about-bg-layer');
+
+      let ticking = false;
+
+      function updateOnScroll() {
+        /* Nav tint on scroll */
+        if (header) {
+          header.classList.toggle('scrolled', window.scrollY > 60);
+        }
+
+        /* About background parallax reveal */
+        if (aboutSection && aboutBgLayer) {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            aboutBgLayer.style.transform = '';
+            aboutBgLayer.style.visibility = 'visible';
+            aboutBgLayer.style.opacity = '1';
+          } else {
+            const rect = aboutSection.getBoundingClientRect();
+
+            if (rect.bottom <= 0) {
+              // Section is completely above viewport: fully hide layer
+              aboutBgLayer.style.visibility = 'hidden';
+              aboutBgLayer.style.opacity = '0';
+            } else if (rect.top >= window.innerHeight) {
+              // Section is below viewport: reset and hide
+              aboutBgLayer.style.transform = 'translate3d(0, 0px, 0)';
+              aboutBgLayer.style.visibility = 'hidden';
+              aboutBgLayer.style.opacity = '0';
+            } else {
+              // Section is in viewport: visible and parallax transformed
+              aboutBgLayer.style.visibility = 'visible';
+              aboutBgLayer.style.opacity = '1';
+              const scrolledPx = Math.max(-rect.top, 0);
+              const maxOffset = aboutSection.offsetHeight;
+              const translateY = Math.min(scrolledPx * SPEED, maxOffset);
+              aboutBgLayer.style.transform = `translate3d(0, ${translateY}px, 0)`;
+            }
+          }
+        }
+
+        ticking = false;
+      }
+
       window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 60);
+        if (!ticking) {
+          requestAnimationFrame(updateOnScroll);
+          ticking = true;
+        }
       }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        if (!ticking) {
+          requestAnimationFrame(updateOnScroll);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('hashchange', () => {
+        requestAnimationFrame(updateOnScroll);
+      });
+
+      // Ensure anchor navigation updates visibility even on fast jumps
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', () => {
+          setTimeout(updateOnScroll, 100);
+          setTimeout(updateOnScroll, 400);
+          setTimeout(updateOnScroll, 800);
+        });
+      });
+
+      // Initial execution
+      updateOnScroll();
 
       /* Hamburger + drawer */
       const btn     = document.getElementById('hamburger');
