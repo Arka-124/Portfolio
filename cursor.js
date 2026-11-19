@@ -74,7 +74,9 @@ if (!isTouchDevice && cursorDot && cursorOutline) {
     '.header-bar a', '.preview-external-link', '.browser-action-btn',
     '.preview-browser-header', '[data-interactive="true"]', '[role="button"]',
     '.floating-badge', '.social-link', '.copy-btn', '.back-arrow',
-    '.hero-title', '.hero-eyebrow', '.about-action-pill', '.timeline-item'
+    '.hero-title', '.hero-eyebrow', '.about-action-pill', '.timeline-item',
+    '.resume-btn', '.resume-modal-close', '.resume-action-btn', '.copy-coord-btn',
+    '.hero-cv-badge', '.theme-toggle-btn', '.dossier-stat'
   ].join(', ');
 
   document.addEventListener('mouseover', (e) => {

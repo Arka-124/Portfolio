@@ -16,7 +16,7 @@
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 99999;
+  z-index: 2147483647 !important;
 }
 
 .cursor-dot {
@@ -71,7 +71,7 @@ body.clicking .cursor-outline {
   background: radial-gradient(circle, rgba(0, 240, 255, 0.28) 0%, rgba(0, 240, 255, 0) 70%);
   transform: translate(-50%, -50%) scale(0.2);
   animation: radar-pulse-expand 0.65s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
-  z-index: 99998;
+  z-index: 2147483646 !important;
 }
 
 @keyframes radar-pulse-expand {
