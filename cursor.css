@@ -1,7 +1,11 @@
 /* --- CUSTOM CURSOR --- */
 
-*, *:hover {
-  cursor: none !important;
+@media (pointer: fine) {
+  body.custom-cursor-enabled,
+  body.custom-cursor-enabled *,
+  body.custom-cursor-enabled *:hover {
+    cursor: none !important;
+  }
 }
 
 .cursor-dot,

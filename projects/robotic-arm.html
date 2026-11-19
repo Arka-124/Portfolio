@@ -207,12 +207,12 @@ JointAngles calculateInverseKinematics(float x, float y, float z) {
       <!-- Bottom right: pull-quote + fluid glass -->
       <div class="grid-item bottom-right"
            style="flex-direction: column; justify-content: space-between; align-items: flex-start;">
-        <div style="max-width: 220px;">
+        <div style="max-width: 220px; position: relative; z-index: 2;">
           <p class="section-title" style="margin-bottom: 0.5rem;">Future Scope</p>
           <p class="sub-text" style="margin-top: 0;">Imitation learning, computer-vision-guided targeting, and semi-autonomous control blending mimic input with learned behavior.</p>
         </div>
 
-        <div class="address-block" style="width: 100%;">
+        <div class="address-block" style="width: 100%; position: relative; z-index: 2;">
           <p style="font-size: 0.6rem; text-align: right; margin-bottom: 0.5rem; color: #888;">MECHATRONICS</p>
           <div class="serif-display">
             move it once,<br>
@@ -236,46 +236,50 @@ JointAngles calculateInverseKinematics(float x, float y, float z) {
             const container = document.getElementById('fluid-glass-container');
             if (!container) return;
 
-            const scene    = new THREE.Scene();
-            const width    = container.clientWidth  || 300;
-            const height   = container.clientHeight || 300;
-            const camera   = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-            camera.position.z = 10;
+            try {
+              const scene    = new THREE.Scene();
+              const width    = container.clientWidth  || 300;
+              const height   = container.clientHeight || 300;
+              const camera   = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+              camera.position.z = 10;
 
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(width, height);
-            renderer.setPixelRatio(window.devicePixelRatio);
-            container.appendChild(renderer.domElement);
+              const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+              renderer.setSize(width, height);
+              renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+              container.appendChild(renderer.domElement);
 
-            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-            const dl = new THREE.DirectionalLight(0xffffff, 3);
-            dl.position.set(2, 5, 5); scene.add(dl);
-            const pl = new THREE.PointLight(0xffffff, 2);
-            pl.position.set(-2, -2, 5); scene.add(pl);
+              scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+              const dl = new THREE.DirectionalLight(0xffffff, 3);
+              dl.position.set(2, 5, 5); scene.add(dl);
+              const pl = new THREE.PointLight(0xffffff, 2);
+              pl.position.set(-2, -2, 5); scene.add(pl);
 
-            const mesh = new THREE.Mesh(
-              new THREE.TorusKnotGeometry(2.1, 0.7, 100, 16),
-              new THREE.MeshPhysicalMaterial({
-                color: 0xffffff, roughness: 0, metalness: 0,
-                transmission: 1, thickness: 5, ior: 1.15,
-                clearcoat: 1, clearcoatRoughness: 0
-              })
-            );
-            scene.add(mesh);
+              const mesh = new THREE.Mesh(
+                new THREE.TorusKnotGeometry(2.1, 0.7, 100, 16),
+                new THREE.MeshPhysicalMaterial({
+                  color: 0xffffff, roughness: 0, metalness: 0,
+                  transmission: 1, thickness: 5, ior: 1.15,
+                  clearcoat: 1, clearcoatRoughness: 0
+                })
+              );
+              scene.add(mesh);
 
-            window.addEventListener('resize', () => {
-              const w = container.clientWidth, h = container.clientHeight;
-              camera.aspect = w / h;
-              camera.updateProjectionMatrix();
-              renderer.setSize(w, h);
-            });
+              window.addEventListener('resize', () => {
+                const w = container.clientWidth, h = container.clientHeight;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h);
+              });
 
-            (function animate() {
-              requestAnimationFrame(animate);
-              mesh.rotation.x += 0.005;
-              mesh.rotation.y += 0.005;
-              renderer.render(scene, camera);
-            })();
+              (function animate() {
+                requestAnimationFrame(animate);
+                mesh.rotation.x += 0.005;
+                mesh.rotation.y += 0.005;
+                renderer.render(scene, camera);
+              })();
+            } catch (err) {
+              console.warn('WebGL initialization skipped:', err);
+            }
           });
         </script>
       </div>

@@ -203,7 +203,7 @@
       title: 'GitHub Profile (@Arka-124)',
       desc: 'Explore open-source repositories and code commits',
       badge: 'External',
-      action: () => { window.open('https://github.com/Arka-124', '_blank'); }
+      action: () => { window.open('https://github.com/Arka-124', '_blank', 'noopener,noreferrer'); }
     },
     {
       group: 'Quick Links',
@@ -211,7 +211,7 @@
       title: 'LinkedIn Profile',
       desc: 'Professional network, endorsements, and credentials',
       badge: 'External',
-      action: () => { window.open('https://www.linkedin.com/in/arka-datta-88a961381/', '_blank'); }
+      action: () => { window.open('https://www.linkedin.com/in/arka-datta-88a961381/', '_blank', 'noopener,noreferrer'); }
     },
     {
       group: 'Terminal Commands',
@@ -387,7 +387,8 @@
 
         projectCards.forEach((card) => {
           const category = card.getAttribute('data-category') || '';
-          if (filter === 'all' || category.includes(filter)) {
+          const catTokens = category.trim().split(/\s+/);
+          if (filter === 'all' || catTokens.includes(filter)) {
             card.classList.remove('is-hidden');
           } else {
             card.classList.add('is-hidden');
@@ -406,6 +407,9 @@
 
     cards.forEach((card) => {
       let isHovered = false;
+      let tiltTicking = false;
+      let lastX = 0;
+      let lastY = 0;
 
       card.addEventListener('mouseenter', () => {
         isHovered = true;
@@ -415,24 +419,38 @@
 
       card.addEventListener('mousemove', (e) => {
         if (!isHovered) return;
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        lastX = e.clientX;
+        lastY = e.clientY;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+        if (!tiltTicking) {
+          tiltTicking = true;
+          requestAnimationFrame(() => {
+            if (!isHovered) {
+              tiltTicking = false;
+              return;
+            }
+            const rect = card.getBoundingClientRect();
+            const x = lastX - rect.left;
+            const y = lastY - rect.top;
 
-        const tiltX = ((y - centerY) / centerY) * -7;
-        const tiltY = ((x - centerX) / centerX) * 7;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-        card.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`);
-        card.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`);
-        card.style.setProperty('--glare-x', `${x}px`);
-        card.style.setProperty('--glare-y', `${y}px`);
+            const tiltX = ((y - centerY) / centerY) * -7;
+            const tiltY = ((x - centerX) / centerX) * 7;
+
+            card.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`);
+            card.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`);
+            card.style.setProperty('--glare-x', `${x}px`);
+            card.style.setProperty('--glare-y', `${y}px`);
+            tiltTicking = false;
+          });
+        }
       });
 
       card.addEventListener('mouseleave', () => {
         isHovered = false;
+        tiltTicking = false;
         card.style.setProperty('--tilt-x', '0deg');
         card.style.setProperty('--tilt-y', '0deg');
         card.style.setProperty('--glare-opacity', '0');
@@ -549,6 +567,13 @@
 
     let inspector = null;
 
+    function closeInspector() {
+      stackItems.forEach((it) => it.classList.remove('active-tech'));
+      if (inspector) inspector.style.display = 'none';
+      const projectCards = document.querySelectorAll('.project-card');
+      projectCards.forEach((c) => c.classList.remove('highlight-pulse'));
+    }
+
     function renderInspector(techKey) {
       const data = TECH_DATA[techKey];
       if (!data) return;
@@ -584,8 +609,7 @@
       `;
 
       inspector.querySelector('.inspector-close-btn')?.addEventListener('click', () => {
-        stackItems.forEach((it) => it.classList.remove('active-tech'));
-        if (inspector) inspector.style.display = 'none';
+        closeInspector();
         playClick();
       });
 
@@ -603,16 +627,15 @@
     }
 
     stackItems.forEach((item) => {
-      item.addEventListener('click', () => {
+      function toggleItem() {
         initAudio();
         playClick();
         const techKey = item.getAttribute('data-tech-id') || '';
         const wasActive = item.classList.contains('active-tech');
 
-        stackItems.forEach((it) => it.classList.remove('active-tech'));
+        closeInspector();
 
         if (wasActive) {
-          if (inspector) inspector.style.display = 'none';
           return;
         }
 
@@ -633,12 +656,34 @@
             }
           });
         }
+      }
+
+      item.addEventListener('click', toggleItem);
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleItem();
+        }
       });
+    });
+
+    // Close on click outside of #stack
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#stack')) {
+        closeInspector();
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeInspector();
+      }
     });
   }
 
   /* ============================================================
-     5. CLICKABLE TILE HOVER SFX
+     5. CLICKABLE TILE HOVER SFX (DELEGATED)
      ============================================================ */
   const CLICKABLE_TILES_SELECTOR = [
     '.project-card',
@@ -670,13 +715,6 @@
   ].join(', ');
 
   function initTileHoverSfx() {
-    const tiles = document.querySelectorAll(CLICKABLE_TILES_SELECTOR);
-    tiles.forEach((tile) => {
-      tile.addEventListener('mouseenter', () => {
-        playHover();
-      });
-    });
-
     document.addEventListener('mouseover', (e) => {
       const tile = e.target.closest && e.target.closest(CLICKABLE_TILES_SELECTOR);
       if (!tile) return;
@@ -684,7 +722,7 @@
       if (!related || !tile.contains(related)) {
         playHover();
       }
-    }, true);
+    });
   }
 
   /* ============================================================
@@ -711,28 +749,41 @@
     const radar = document.querySelector('.hero-radar');
     if (!radar || window.innerWidth <= 960) return;
 
+    let ticking = false;
+    let lastClientX = 0;
+    let lastClientY = 0;
+
     window.addEventListener('mousemove', (e) => {
-      const rect = radar.getBoundingClientRect();
-      const radarCenterX = rect.left + rect.width / 2;
-      const radarCenterY = rect.top + rect.height / 2;
+      lastClientX = e.clientX;
+      lastClientY = e.clientY;
 
-      const dx = e.clientX - radarCenterX;
-      const dy = e.clientY - radarCenterY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          const rect = radar.getBoundingClientRect();
+          const radarCenterX = rect.left + rect.width / 2;
+          const radarCenterY = rect.top + rect.height / 2;
 
-      const maxDist = 650;
-      if (dist < maxDist) {
-        const proximity = 1 - (dist / maxDist);
-        const speed = Math.max(3.2, 18 - proximity * 14.8);
-        const glow = 0.25 + proximity * 0.75;
+          const dx = lastClientX - radarCenterX;
+          const dy = lastClientY - radarCenterY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
 
-        radar.style.setProperty('--radar-speed', `${speed.toFixed(2)}s`);
-        radar.style.setProperty('--radar-glow', glow.toFixed(2));
-        radar.classList.add('proximity-active');
-      } else {
-        radar.style.setProperty('--radar-speed', '18s');
-        radar.style.setProperty('--radar-glow', '0.25');
-        radar.classList.remove('proximity-active');
+          const maxDist = 650;
+          if (dist < maxDist) {
+            const proximity = 1 - (dist / maxDist);
+            const speed = Math.max(3.2, 18 - proximity * 14.8);
+            const glow = 0.25 + proximity * 0.75;
+
+            radar.style.setProperty('--radar-speed', `${speed.toFixed(2)}s`);
+            radar.style.setProperty('--radar-glow', glow.toFixed(2));
+            radar.classList.add('proximity-active');
+          } else {
+            radar.style.setProperty('--radar-speed', '18s');
+            radar.style.setProperty('--radar-glow', '0.25');
+            radar.classList.remove('proximity-active');
+          }
+          ticking = false;
+        });
       }
     }, { passive: true });
   }

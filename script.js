@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = card.getAttribute('data-link');
     if (!url) return; // no link set yet — skip
 
+    if (!card.hasAttribute('role')) card.setAttribute('role', 'link');
+    if (!card.hasAttribute('tabindex')) card.setAttribute('tabindex', '0');
+
     card.addEventListener('click', () => {
       window.location.href = url;
     });
