@@ -59,8 +59,8 @@ Location: New Delhi, India | Portfolio: https://arka-124.github.io/Portfolio/
 GitHub: https://github.com/Arka-124 | LinkedIn: https://www.linkedin.com/in/arka-datta-88a961381/
 
 EDUCATION:
-- B.Tech in Automation and Robotics (2024 - 2028)
-  University School of Automation and Robotics (USAR), GGSIPU, Delhi (CGPA: 9.26)
+- B.Tech in Automation and Robotics (2024 - 2028, 3rd Year)
+  University School of Automation and Robotics (USAR), GGSIPU, Delhi
 
 EXPERIENCE & HONORS:
 - Winner: Smart India Hackathon (SIH) 2026 — NMDC Limited (Autonomous Scout Rover "FogBot")
