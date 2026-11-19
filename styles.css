@@ -361,7 +361,14 @@ a   { text-decoration: none; color: inherit; }
   border: 1px solid rgba(0, 229, 255, 0.25);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.1);
   animation: float-badge 4.5s ease-in-out infinite alternate;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-badge:hover {
+  border-color: rgba(0, 229, 255, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
 @keyframes float-badge {
