@@ -61,7 +61,7 @@ if (!isTouchDevice) {
       '.header-bar a', '.preview-external-link', '.browser-action-btn',
       '.preview-browser-header', '[data-interactive="true"]', '[role="button"]',
       '.floating-badge', '.social-link', '.copy-btn', '.back-arrow',
-      '.hero-title', '.hero-eyebrow'
+      '.hero-title', '.hero-eyebrow', '.about-action-pill', '.timeline-item'
     ].join(', ');
 
     document.addEventListener('mouseover', (e) => {

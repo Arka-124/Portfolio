@@ -659,6 +659,8 @@
     '#github-toggle',
     '#hamburger',
     '.hero-title',
+    '.about-action-pill',
+    '.timeline-item',
     '.nav-links a',
     '.nav-drawer a',
     '.footer-nav-col a',
@@ -887,6 +889,35 @@
   }
 
   /* ============================================================
+     6. ABOUT / EXPERIENCE SECTION SPOTLIGHT & SHORTCUTS
+     ============================================================ */
+  function initAboutSpotlight() {
+    const aboutGrid = document.querySelector('.about-grid');
+    if (!aboutGrid) return;
+
+    aboutGrid.addEventListener('mousemove', (e) => {
+      const rect = aboutGrid.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      aboutGrid.style.setProperty('--about-spotlight-x', `${x}px`);
+      aboutGrid.style.setProperty('--about-spotlight-y', `${y}px`);
+    }, { passive: true });
+  }
+
+  function initAboutActionPills() {
+    const scrollStackBtn = document.getElementById('about-scroll-stack-btn');
+    if (scrollStackBtn) {
+      scrollStackBtn.addEventListener('click', () => {
+        playClick();
+        const stackSection = document.getElementById('stack');
+        if (stackSection) {
+          stackSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  }
+
+  /* ============================================================
      GLOBAL EVENT LISTENERS & BOOTSTRAP
      ============================================================ */
   document.addEventListener('DOMContentLoaded', () => {
@@ -964,6 +995,8 @@
     initRadarClickPing();
     initMagneticHeroChips();
     initHeroTextScramble();
+    initAboutSpotlight();
+    initAboutActionPills();
     initTileHoverSfx();
 
     ['pointerdown', 'click', 'keydown', 'touchstart'].forEach((evt) => {
