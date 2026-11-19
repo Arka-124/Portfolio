@@ -6,6 +6,18 @@ import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/
  * visibilitychange tab pausing, and prefers-reduced-motion.
  */
 
+const THEME_HEX_MAP = {
+  cyan: 0x00f0ff,
+  amber: 0xffb000,
+  green: 0x00ff66,
+  mono: 0xffffff
+};
+
+function getThemeAccentHex() {
+  const theme = (typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme')) || 'cyan';
+  return THEME_HEX_MAP[theme] || 0x00f0ff;
+}
+
 export function initGlassButton(container, linkTarget = 'contact.html') {
   if (!container) return;
   try {
@@ -24,9 +36,15 @@ export function initGlassButton(container, linkTarget = 'contact.html') {
     const dl = new THREE.DirectionalLight(0xffffff, 3);
     dl.position.set(2, 5, 5);
     scene.add(dl);
-    const pl = new THREE.PointLight(0x00f0ff, 2.5);
+    const pl = new THREE.PointLight(getThemeAccentHex(), 2.5);
     pl.position.set(-2, -2, 3);
     scene.add(pl);
+
+    // Dynamic HUD theme synchronization for 3D rim lighting
+    const themeObserver = new MutationObserver(() => {
+      pl.color.setHex(getThemeAccentHex());
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     const mesh = new THREE.Mesh(
       new THREE.TorusKnotGeometry(1.2, 0.38, 80, 16),
@@ -113,9 +131,15 @@ export function initFluidGlass(container) {
     const dl = new THREE.DirectionalLight(0xffffff, 3);
     dl.position.set(2, 5, 5);
     scene.add(dl);
-    const pl = new THREE.PointLight(0x00f0ff, 2.5);
+    const pl = new THREE.PointLight(getThemeAccentHex(), 2.5);
     pl.position.set(-2, -2, 5);
     scene.add(pl);
+
+    // Dynamic HUD theme synchronization for 3D rim lighting
+    const themeObserver = new MutationObserver(() => {
+      pl.color.setHex(getThemeAccentHex());
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     const mesh = new THREE.Mesh(
       new THREE.TorusKnotGeometry(2.1, 0.7, 80, 16),

@@ -66,7 +66,7 @@ export function initCardTilt() {
       if (glareEl) {
         const glareX = (x / rect.width) * 100;
         const glareY = (y / rect.height) * 100;
-        glareEl.style.background = `radial-gradient(circle 280px at ${glareX}% ${glareY}%, rgba(0, 240, 255, 0.14), transparent 70%)`;
+        glareEl.style.background = `radial-gradient(circle 280px at ${glareX}% ${glareY}%, var(--accent-dim), transparent 70%)`;
         glareEl.style.opacity = '1';
       }
 

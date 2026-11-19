@@ -21,6 +21,14 @@
   <meta name="twitter:description" content="Air-gapped local browser processing suite and native OS application distributor. Zero data leakage.">
   <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
 
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('arka_portfolio_theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
@@ -157,7 +165,7 @@
       <div class="grid-item live-preview-section">
         <div class="label-row" style="margin-bottom: 1.25rem;">
           <span style="display: flex; align-items: center; gap: 0.55rem;">
-            <span style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; display: inline-block; box-shadow: 0 0 10px #00f0ff; animation: live-pulse 2s infinite ease-in-out;"></span>
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; box-shadow: 0 0 10px var(--accent); animation: live-pulse 2s infinite ease-in-out;"></span>
             Live Application Sandbox &bull; Air-Gapped Egress Testing
           </span>
           <a href="https://zero-egress.vercel.app/" target="_blank" rel="noopener noreferrer" class="preview-external-link" style="color: var(--accent); text-decoration: none; font-size: 0.75rem; display: flex; align-items: center; gap: 0.4rem; font-family: monospace;">

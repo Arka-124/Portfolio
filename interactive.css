@@ -115,8 +115,8 @@
   width: 100%;
   max-width: 640px;
   background: rgba(12, 14, 18, 0.94);
-  border: 1px solid rgba(0, 229, 255, 0.35);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 229, 255, 0.15);
+  border: 1px solid var(--accent-border);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--accent-dim);
   border-radius: 20px;
   overflow: hidden;
   transform: translateY(-20px) scale(0.97);
@@ -181,7 +181,7 @@
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: rgba(0, 229, 255, 0.75);
+  color: var(--accent);
   padding: 0.6rem 0.9rem 0.3rem;
   font-weight: 700;
 }
@@ -201,7 +201,7 @@
 
 .cmd-item:hover,
 .cmd-item.selected {
-  background: rgba(0, 229, 255, 0.12);
+  background: var(--accent-dim);
   color: #ffffff;
   border-left: 3px solid var(--accent);
   padding-left: calc(0.9rem - 3px);
@@ -235,11 +235,11 @@
 
 .cmd-terminal-box {
   background: #050608;
-  border-top: 1px solid rgba(0, 229, 255, 0.2);
+  border-top: 1px solid var(--accent-border);
   padding: 1rem 1.4rem;
   font-family: 'Space Grotesk', monospace;
   font-size: 0.8rem;
-  color: #00e5ff;
+  color: var(--accent);
   line-height: 1.5;
   max-height: 160px;
   overflow-y: auto;
@@ -317,7 +317,7 @@
 
 .filter-tab:hover {
   color: var(--text);
-  border-color: rgba(0, 229, 255, 0.3);
+  border-color: var(--accent-border);
 }
 
 .filter-tab.active {
@@ -325,7 +325,7 @@
   color: var(--bg);
   border-color: var(--accent);
   font-weight: 700;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+  box-shadow: 0 0 15px var(--accent-glow);
 }
 
 .filter-count {
@@ -348,7 +348,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--glare-x) var(--glare-y), rgba(0, 229, 255, 0.18), transparent 60%);
+  background: radial-gradient(circle at var(--glare-x) var(--glare-y), var(--accent-dim), transparent 60%);
   pointer-events: none;
   opacity: var(--glare-opacity);
   transition: opacity 0.3s ease;
@@ -361,15 +361,15 @@
 
 .project-card.highlight-pulse {
   animation: card-pulse 1.8s ease-in-out infinite;
-  border-color: #00e5ff !important;
+  border-color: var(--accent) !important;
 }
 
 @keyframes card-pulse {
   0%, 100% {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 229, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 10px var(--accent-dim);
   }
   50% {
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 229, 255, 0.5);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow);
   }
 }
 
@@ -383,13 +383,13 @@
 }
 
 .stack-icon-item.active-tech {
-  filter: drop-shadow(0 0 14px rgba(0, 229, 255, 0.85));
+  filter: drop-shadow(0 0 14px var(--accent-glow));
   transform: translateY(-5px) scale(1.08);
 }
 
 .stack-icon-item.active-tech .stack-icon-label {
   opacity: 1 !important;
-  color: #00e5ff !important;
+  color: var(--accent) !important;
   font-weight: 700;
 }
 
@@ -398,7 +398,7 @@
   background: rgba(12, 14, 18, 0.85);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  border: 1px solid var(--accent-border);
   border-radius: 16px;
   padding: 1.25rem 1.5rem;
   display: flex;
@@ -435,9 +435,9 @@
   font-size: 0.7rem;
   padding: 0.2rem 0.6rem;
   border-radius: 20px;
-  background: rgba(0, 229, 255, 0.12);
-  border: 1px solid rgba(0, 229, 255, 0.35);
-  color: #00e5ff;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
 }
 
 .inspector-desc {
@@ -478,10 +478,10 @@
 }
 
 .tech-project-chip:hover {
-  background: rgba(0, 229, 255, 0.15);
-  border-color: #00e5ff;
+  background: var(--accent-dim);
+  border-color: var(--accent);
   color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 10px var(--accent-glow);
   transform: translateY(-1px);
 }
 
@@ -494,7 +494,7 @@
 }
 
 .hero-radar.proximity-active {
-  filter: drop-shadow(0 0 calc(20px * var(--radar-glow)) #00e5ff);
+  filter: drop-shadow(0 0 calc(20px * var(--radar-glow)) var(--accent));
 }
 
 /* ============================================================

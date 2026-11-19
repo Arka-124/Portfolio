@@ -128,7 +128,7 @@ export function initStackInspector() {
     const projectChips = data.projects.map((p) =>
       `<a href="${p.link}" class="tech-project-chip">
         <span>${p.name}</span>
-        <span style="color:#00f0ff;">&rarr;</span>
+        <span style="color:var(--accent);">&rarr;</span>
       </a>`
     ).join('');
 

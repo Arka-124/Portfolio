@@ -19,6 +19,7 @@ export function applyTheme(themeName, playSound = false) {
   const valid = THEMES.includes(themeName) ? themeName : 'cyan';
   document.documentElement.setAttribute('data-theme', valid);
   localStorage.setItem('arka_portfolio_theme', valid);
+  window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: valid } }));
 
   document.querySelectorAll('.theme-label').forEach((el) => {
     el.textContent = THEME_NAMES[valid];
