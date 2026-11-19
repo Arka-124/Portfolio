@@ -1,5 +1,15 @@
 import { initAudio, playClick, playHover } from './sfx.js';
 
+function escapeHtml(str) {
+  if (typeof str !== 'string') return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export const TECH_DATA = {
   html5: {
     title: 'HTML5',
@@ -126,8 +136,8 @@ export function initStackInspector() {
     inspector.style.display = 'flex';
 
     const projectChips = data.projects.map((p) =>
-      `<a href="${p.link}" class="tech-project-chip">
-        <span>${p.name}</span>
+      `<a href="${escapeHtml(p.link)}" class="tech-project-chip">
+        <span>${escapeHtml(p.name)}</span>
         <span style="color:var(--accent);">&rarr;</span>
       </a>`
     ).join('');
@@ -135,12 +145,12 @@ export function initStackInspector() {
     inspector.innerHTML = `
       <div class="inspector-header">
         <div class="inspector-tech-title">
-          <span>${data.title}</span>
-          <span class="inspector-role-badge">${data.role}</span>
+          <span>${escapeHtml(data.title)}</span>
+          <span class="inspector-role-badge">${escapeHtml(data.role)}</span>
         </div>
         <button class="inspector-close-btn" aria-label="Close details" style="background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer;padding:0.2rem 0.5rem;line-height:1;">&times;</button>
       </div>
-      <p class="inspector-desc">${data.desc}</p>
+      <p class="inspector-desc">${escapeHtml(data.desc)}</p>
       <div class="inspector-projects-row">
         <span class="inspector-projects-label">Applied In:</span>
         ${projectChips}

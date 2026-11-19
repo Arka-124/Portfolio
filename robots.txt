@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arka-124.github.io/Portfolio/sitemap.xml

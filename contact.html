@@ -13,20 +13,22 @@
   <meta property="og:url" content="https://arka-124.github.io/Portfolio/contact.html">
   <meta property="og:title" content="Contact — Arka Datta | Robotics Engineer &amp; Developer">
   <meta property="og:description" content="Get in touch with Arka Datta — Robotics Engineer &amp; Full-Stack Developer.">
-  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact — Arka Datta">
   <meta name="twitter:description" content="Get in touch with Arka Datta — Robotics Engineer &amp; Full-Stack Developer.">
-  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.jpg">
 
   <script>
     (function () {
-      const savedTheme = localStorage.getItem('arka_portfolio_theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
+      try {
+        const savedTheme = localStorage.getItem('arka_portfolio_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+      } catch (_) {}
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,28 +43,28 @@
   <div class="cursor-outline"></div>
   <script src="cursor.js" defer></script>
 
-  <div class="wrapper">
+  <main class="wrapper" id="main-content" role="main">
     <div class="grid-container">
 
       <!-- Top bar: back arrow & resume link -->
-      <div class="header-bar">
+      <header class="header-bar" role="banner">
         <a href="index.html" aria-label="Back to Home" style="color: var(--text); display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-weight: 600;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round">
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
           <span style="font-size: 0.82rem; letter-spacing: 0.5px; font-family: 'Space Grotesk', monospace;">SYS.HOME</span>
         </a>
-        <a href="resume.pdf" download="Arka_Datta_Resume.pdf" class="hero-cv-badge" style="text-decoration: none;" title="Download Official PDF Resume">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <a href="resume.pdf" download="Arka_Datta_Resume.pdf" class="hero-cv-badge" style="text-decoration: none;" title="Download Official PDF Resume" aria-label="Download Official CV PDF">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
           <span>OFFICIAL CV [PDF]</span>
         </a>
-      </div>
+      </header>
 
       <!-- Hero title -->
       <div class="hero-title">
@@ -70,47 +72,47 @@
       </div>
 
       <!-- Official Dossier & Resume Bar -->
-      <div class="grid-item resume-banner-card">
+      <section class="grid-item resume-banner-card" role="region" aria-label="Official Resume and Credentials">
         <div class="resume-banner-left">
-          <div class="resume-banner-dot"></div>
+          <div class="resume-banner-dot" aria-hidden="true"></div>
           <div>
             <div class="resume-banner-tag">OFFICIAL CANDIDATE CREDENTIALS</div>
             <div class="resume-banner-title">Arka Datta — Executive Resume &amp; Portfolio Dossier (1-Page ATS Clean)</div>
           </div>
         </div>
         <div class="resume-banner-actions">
-          <a href="resume.pdf" download="Arka_Datta_Resume.pdf" class="resume-action-btn primary" style="text-decoration: none;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <a href="resume.pdf" download="Arka_Datta_Resume.pdf" class="resume-action-btn primary" style="text-decoration: none;" aria-label="Download Official Resume PDF">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             Download PDF
           </a>
-          <a href="resume.html" target="_blank" rel="noopener noreferrer" class="resume-action-btn secondary" style="text-decoration: none;">
+          <a href="resume.html" target="_blank" rel="noopener noreferrer" class="resume-action-btn secondary" style="text-decoration: none;" aria-label="View Resume in Web Format">
             Web View
           </a>
         </div>
-      </div>
+      </section>
 
       <!-- Name card -->
-      <div class="grid-item detail-card">
+      <section class="grid-item detail-card" role="region" aria-label="Candidate Name">
         <div class="label-row">
           <span>Name</span>
-          <span class="arrow">&rarr;</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
         </div>
         <div class="content-main">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2L14.4 9.6H22L15.8 14.4L18.2 22L12 17.2L5.8 22L8.2 14.4L2 9.6H9.6L12 2Z"/>
           </svg>
           <p class="detail-text" style="font-size: 1.43rem;">Arka Datta</p>
         </div>
-      </div>
+      </section>
 
       <!-- Email card -->
-      <div class="grid-item detail-card">
+      <section class="grid-item detail-card" role="region" aria-label="Email Coordinates">
         <div class="label-row">
           <span>Email</span>
-          <span class="arrow">&rarr;</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
         </div>
         <div class="content-main">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
           </svg>
@@ -119,25 +121,26 @@
                target="_blank"
                rel="noopener noreferrer"
                class="detail-text"
+               aria-label="Send email to arkadatta1531@gmail.com (opens Gmail)"
                style="font-size: 0.9rem; word-break: break-all; text-decoration: none; color: inherit; position: relative; z-index: 10;">
               arkadatta1531@gmail.com
             </a>
-            <button class="copy-coord-btn" data-copy="arkadatta1531@gmail.com" data-label="Email" title="Copy Email">
+            <button class="copy-coord-btn" data-copy="arkadatta1531@gmail.com" data-label="Email" title="Copy Email" aria-label="Copy Email Address">
               <span>📋</span> Copy
             </button>
           </div>
           <p class="sub-text">For professional correspondence, kindly reach out via email.</p>
         </div>
-      </div>
+      </section>
 
       <!-- Phone card -->
-      <div class="grid-item detail-card">
+      <section class="grid-item detail-card" role="region" aria-label="Phone Coordinates">
         <div class="label-row">
           <span>Phone</span>
-          <span class="arrow">&rarr;</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
         </div>
         <div class="content-main">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <rect x="3"   y="3"   width="5" height="5"></rect>
             <rect x="9.5" y="3"   width="5" height="5"></rect>
             <rect x="16"  y="3"   width="5" height="5"></rect>
@@ -150,44 +153,44 @@
           </svg>
           <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
             <p class="detail-text" style="margin: 0;">+91 62972 49529</p>
-            <button class="copy-coord-btn" data-copy="+916297249529" data-label="Phone" title="Copy Phone">
+            <button class="copy-coord-btn" data-copy="+916297249529" data-label="Phone" title="Copy Phone" aria-label="Copy Phone Number">
               <span>📋</span> Copy
             </button>
           </div>
           <p class="sub-text">Call availability is minimal; email remains the primary channel.</p>
         </div>
-      </div>
+      </section>
 
       <!-- Location card -->
-      <div class="grid-item detail-card">
+      <section class="grid-item detail-card" role="region" aria-label="Location Details">
         <div class="label-row">
           <span>Location</span>
-          <span class="arrow">&rarr;</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
         </div>
         <div class="content-main">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
           <p class="sub-text" style="margin-top: 2rem;">University School of Automation and Robotics Campus, GGSIPU EDC, Surajmal Vihar, New Delhi, 110092</p>
         </div>
-      </div>
+      </section>
 
       <!-- Bottom left: socials -->
-      <div class="grid-item bottom-left">
+      <section class="grid-item bottom-left" role="region" aria-label="Social Profiles">
         <span class="section-title">Socials</span>
         <div class="social-list">
           <span style="font-size: 0.6rem; color: #888; margin-bottom: 0.5rem;">JANUARY 2026</span>
-          <a href="https://www.linkedin.com/in/arka-datta-88a961381/" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href="https://www.linkedin.com/in/arka-datta-88a961381/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile: /Arka-Datta">
             LINKEDIN: <span>/Arka-Datta</span>
           </a>
-          <a href="https://www.instagram.com/notagain.arkaaa" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href="https://www.instagram.com/notagain.arkaaa" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile: @notagain.arkaaa">
             INSTAGRAM: <span>@notagain.arkaaa</span>
           </a>
-          <a href="https://github.com/Arka-124" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href="https://github.com/Arka-124" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile: @Arka-124">
             GITHUB: <span>Arka</span>
           </a>
         </div>
-      </div>
+      </section>
 
       <!-- Bottom right: pull-quote + fluid glass -->
       <div class="grid-item bottom-right"
@@ -216,7 +219,7 @@
       </div>
 
     </div>
-  </div>
+  </main>
 
   <script type="module" src="glass-button.js"></script>
 

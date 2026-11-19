@@ -9,7 +9,7 @@ A brutalist, HUD-inspired portfolio engineered with vanilla HTML, modern CSS, pr
 
 ## Preview
 
-<img width="1200" height="630" alt="Arka Datta Portfolio Preview" src="images/og-image.png" />
+<img width="1200" height="630" alt="Arka Datta Portfolio Preview" src="images/og-image.jpg" />
 
 ---
 
@@ -21,18 +21,18 @@ A brutalist, HUD-inspired portfolio engineered with vanilla HTML, modern CSS, pr
 - **Official Resume & Executive Dossier Suite**: ATS-compliant single-page A4 resume ([resume.html](resume.html)), automated PDF print download ([resume.pdf](resume.pdf)), and an interactive candidate dossier modal.
 - **Hero Radar & Micro-Interactions**: Proximity-reactive radar scanner, dynamic cursor click telemetry ping, interactive magnetic chips, and cybernetic text glitch scrambler.
 - **Creative Stack Inspector**: Interactive hardware and web technology grid with real-time project linking and highlight pulses.
-- **3D WebGL Glass Visualizers**: Lightweight Three.js liquid-glass button and fluid glass background featuring `IntersectionObserver` viewport render-pausing and `prefers-reduced-motion` support.
+- **3D WebGL Glass Visualizers**: Lightweight self-hosted Three.js liquid-glass button and fluid glass background featuring `IntersectionObserver` viewport render-pausing and `prefers-reduced-motion` support.
 - **Deep-Dive Project Case Studies**: Dedicated technical breakdowns for FogBot, ZeroEgress, 4-DOF Robotic Arm, and more.
-- **Full Privacy & Accessibility**: Screen-reader ARIA landmarks, `rel="noopener noreferrer"` external links, keyboard navigation, and zero network tracking.
+- **Full Privacy & Accessibility**: Screen-reader ARIA landmarks, `rel="noopener noreferrer"` external links, keyboard navigation focus indicators, and no analytics or tracking scripts.
 
 ---
 
 ## Tech Stack
 
-- **Markup & Layout:** HTML5 (Semantic, Open Graph, Twitter Cards)
+- **Markup & Layout:** HTML5 (Semantic, Open Graph, Twitter Cards, Sitemap, Robots)
 - **Styling:** Modern CSS3 (Grid & Flexbox, custom CSS properties, responsive media queries, glassmorphism)
 - **Scripting & Modularity:** Vanilla ES6+ Modules (`modules/sfx.js`, `modules/themes.js`, `modules/commands.js`, `modules/resume.js`, etc.)
-- **3D & Graphics:** [Three.js r160](https://threejs.org/) (via cdnjs Cloudflare CDN with viewport-optimized render loop)
+- **3D & Graphics:** [Three.js r160](https://threejs.org/) (Self-hosted ES module in `vendor/three.module.min.js` with viewport-optimized render loop)
 - **Animations:** [GSAP 3.12.5](https://gsap.com/) + ScrollTrigger (with Subresource Integrity hashes)
 - **Audio:** Web Audio API (Synthesized oscillators)
 - **Typography:** Space Grotesk, Playfair Display, Inter (Google Fonts)
@@ -48,6 +48,9 @@ Portfolio/
 ├── contact.html            # Dedicated contact page & credentials banner
 ├── resume.html             # Standalone 1-page ATS-optimized print resume
 ├── resume.pdf              # Pre-compiled print-ready PDF resume download
+├── 404.html                # Custom cybernetic 404 fallback page
+├── robots.txt              # Search engine crawler directives
+├── sitemap.xml             # XML sitemap index for search bots
 ├── glass-button.js         # Shared viewport-paused Three.js glass visualizer
 ├── interactive.js          # Core module coordinator and global event bridge
 ├── modules/                # Modular client architecture
@@ -60,6 +63,8 @@ Portfolio/
 │   ├── stack.js            # Interactive stack inspector & project pulse
 │   ├── hero.js             # Radar proximity, click ping, text scrambler & IST clock
 │   └── about.js            # Frosted glass spotlight & action pills
+├── vendor/                 # Self-hosted external dependencies
+│   └── three.module.min.js # Three.js r160 ES module (zero external CDN reliance)
 ├── script.js               # Scroll-reveal, GSAP parallax, nav tint & drawer
 ├── cursor.js               # Dual-ring cyber cursor tracker
 ├── styles.css              # Main design system and brutalist layouts
@@ -74,7 +79,7 @@ Portfolio/
 │   ├── toll-gate.html      # Automated Toll Gate Development
 │   ├── movie-review-qa.html# AI Chatbot for Movie Reviews (FastAPI / NLP)
 │   └── vm-automobiles.html # VM Automobiles Luxury Website
-├── images/                 # Optimized WebP photos, og-image, and project media
+├── images/                 # Optimized WebP photos, og-image.jpg, and project media
 ├── logo/                   # Clean favicon.png and tech stack logos
 └── docs/                   # Internal specifications and architecture notes
 ```

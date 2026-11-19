@@ -1,6 +1,20 @@
 import { playThemeChime, playHover } from './sfx.js';
 import { showCyberToast } from './toast.js';
 
+function safeGetStorage(key, fallback = null) {
+  try {
+    return localStorage.getItem(key) ?? fallback;
+  } catch (_) {
+    return fallback;
+  }
+}
+
+function safeSetStorage(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (_) {}
+}
+
 export const THEMES = ['cyan', 'amber', 'green', 'mono'];
 
 export const THEME_NAMES = {
@@ -12,13 +26,13 @@ export const THEME_NAMES = {
 
 export function getCurrentTheme() {
   if (typeof window === 'undefined') return 'cyan';
-  return localStorage.getItem('arka_portfolio_theme') || 'cyan';
+  return safeGetStorage('arka_portfolio_theme', 'cyan');
 }
 
 export function applyTheme(themeName, playSound = false) {
   const valid = THEMES.includes(themeName) ? themeName : 'cyan';
   document.documentElement.setAttribute('data-theme', valid);
-  localStorage.setItem('arka_portfolio_theme', valid);
+  safeSetStorage('arka_portfolio_theme', valid);
   window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: valid } }));
 
   document.querySelectorAll('.theme-label').forEach((el) => {

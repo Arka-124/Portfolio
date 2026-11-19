@@ -2,8 +2,22 @@
  * Procedural Web Audio SFX Engine
  * Zero external audio dependencies. Generates real-time sound synthesized via Web Audio API.
  */
+function safeGetStorage(key, fallback = null) {
+  try {
+    return localStorage.getItem(key) ?? fallback;
+  } catch (_) {
+    return fallback;
+  }
+}
+
+function safeSetStorage(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (_) {}
+}
+
 let audioCtx = null;
-let sfxEnabled = typeof window !== 'undefined' && localStorage.getItem('arka_portfolio_sfx') === 'true';
+let sfxEnabled = typeof window !== 'undefined' && safeGetStorage('arka_portfolio_sfx') === 'true';
 let lastHoverTime = 0;
 
 export function initAudio() {
@@ -155,7 +169,7 @@ export function updateSfxToggleBtn() {
 export function toggleSfx() {
   initAudio();
   sfxEnabled = !sfxEnabled;
-  localStorage.setItem('arka_portfolio_sfx', sfxEnabled ? 'true' : 'false');
+  safeSetStorage('arka_portfolio_sfx', sfxEnabled ? 'true' : 'false');
   updateSfxToggleBtn();
   if (sfxEnabled) {
     playChirp();

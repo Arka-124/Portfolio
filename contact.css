@@ -33,6 +33,13 @@ html[data-theme="mono"] {
 
 * { box-sizing: border-box; }
 
+/* Accessibility Focus States */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 body {
   margin: 0;
   padding: 0;

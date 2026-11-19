@@ -3,6 +3,16 @@ import { openResumeModal } from './resume.js';
 import { copyToClipboard } from './toast.js';
 import { applyTheme, cycleTheme, getCurrentTheme } from './themes.js';
 
+function escapeHtml(str) {
+  if (typeof str !== 'string') return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export const COMMAND_ITEMS = [
   {
     group: 'Projects',
@@ -328,17 +338,17 @@ function renderCommandItems() {
   filteredItems.forEach((item, index) => {
     if (item.group !== currentGroup) {
       currentGroup = item.group;
-      html += `<div class="cmd-group-label">${currentGroup}</div>`;
+      html += `<div class="cmd-group-label">${escapeHtml(currentGroup)}</div>`;
     }
 
     const isSelected = index === selectedIndex;
     html += `
       <div class="cmd-item ${isSelected ? 'selected' : ''}" data-index="${index}">
         <div class="cmd-item-left">
-          <span class="cmd-item-title">${item.title}</span>
-          <span class="cmd-item-desc">${item.desc}</span>
+          <span class="cmd-item-title">${escapeHtml(item.title)}</span>
+          <span class="cmd-item-desc">${escapeHtml(item.desc)}</span>
         </div>
-        <span class="cmd-item-badge">${item.badge}</span>
+        <span class="cmd-item-badge">${escapeHtml(item.badge)}</span>
       </div>
     `;
   });

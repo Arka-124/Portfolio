@@ -13,20 +13,22 @@
   <meta property="og:url" content="https://arka-124.github.io/Portfolio/projects/robotic-arm.html">
   <meta property="og:title" content="Miniature 4-DOF Robotic Arm | Arka Datta">
   <meta property="og:description" content="Dual-mode potentiometer mimic telemetry and forward kinematics trajectory replication with ATmega328P.">
-  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Miniature 4-DOF Robotic Arm | Arka Datta">
   <meta name="twitter:description" content="Dual-mode potentiometer mimic telemetry and forward kinematics trajectory replication with ATmega328P.">
-  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.jpg">
 
   <script>
     (function () {
-      const savedTheme = localStorage.getItem('arka_portfolio_theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
+      try {
+        const savedTheme = localStorage.getItem('arka_portfolio_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+      } catch (_) {}
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -183,26 +185,6 @@ JointAngles calculateInverseKinematics(float x, float y, float z) {
   float t2 = alpha + beta;
   ...
 }</div>
-      </div>
-
-      <!-- Video demo -->
-      <div class="grid-item video-section">
-        <span class="section-title">Demo</span>
-        <div class="video-frame" id="video-frame">
-          <!--
-            TODO: replace this placeholder with the real demo video, e.g.
-              <video src="robotic-arm-demo.mp4" controls playsinline></video>
-            or an embed:
-              <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-          -->
-          <div class="video-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"></polygon>
-            </svg>
-            <span class="video-placeholder-text">Video Demo — Coming Soon</span>
-          </div>
-        </div>
       </div>
 
       <!-- Bottom left: features -->

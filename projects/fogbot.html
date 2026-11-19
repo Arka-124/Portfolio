@@ -23,10 +23,12 @@
 
   <script>
     (function () {
-      const savedTheme = localStorage.getItem('arka_portfolio_theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
+      try {
+        const savedTheme = localStorage.getItem('arka_portfolio_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+      } catch (_) {}
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">

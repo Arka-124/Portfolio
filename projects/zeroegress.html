@@ -13,20 +13,22 @@
   <meta property="og:url" content="https://arka-124.github.io/Portfolio/projects/zeroegress.html">
   <meta property="og:title" content="ZeroEgress — Air-Gapped File Utilities | Arka Datta">
   <meta property="og:description" content="Air-gapped local browser processing suite and native OS application distributor. Zero external telemetry, zero network leakage.">
-  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ZeroEgress — Air-Gapped File Utilities | Arka Datta">
   <meta name="twitter:description" content="Air-gapped local browser processing suite and native OS application distributor. Zero data leakage.">
-  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.jpg">
 
   <script>
     (function () {
-      const savedTheme = localStorage.getItem('arka_portfolio_theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
+      try {
+        const savedTheme = localStorage.getItem('arka_portfolio_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+      } catch (_) {}
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">

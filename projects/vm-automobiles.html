@@ -13,20 +13,22 @@
   <meta property="og:url" content="https://arka-124.github.io/Portfolio/projects/vm-automobiles.html">
   <meta property="og:title" content="VM Automobiles | Arka Datta">
   <meta property="og:description" content="Luxury car brand showcase with cinematic 3-pane overlay navigation and responsive interactive design.">
-  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="VM Automobiles | Arka Datta">
   <meta name="twitter:description" content="Luxury car brand showcase with cinematic 3-pane overlay navigation.">
-  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.jpg">
 
   <script>
     (function () {
-      const savedTheme = localStorage.getItem('arka_portfolio_theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
+      try {
+        const savedTheme = localStorage.getItem('arka_portfolio_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+      } catch (_) {}
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
