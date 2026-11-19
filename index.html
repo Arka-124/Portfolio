@@ -6,6 +6,14 @@
   <meta name="description" content="Arka Datta — Full-Stack Web Developer &amp; Robotics Engineer. Portfolio of AI, robotics, and web development projects.">
   <link rel="icon" type="image/png" href="logo/Layerstop_4-removebg-preview.png">
   <title>Arka Datta | Portfolio</title>
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('arka_portfolio_theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -27,6 +35,14 @@
     <a href="#stack">Stack</a>
     <a href="contact.html" class="drawer-contact">Send a message</a>
     <div style="padding: 1.5rem 0 0; display: flex; flex-direction: column; gap: 0.75rem;">
+      <button class="resume-btn" onclick="document.getElementById('resume-btn').click();" aria-label="Open Resume Modal">
+        <span class="cmd-icon">CV</span>
+        <span>Executive Resume</span>
+      </button>
+      <button class="theme-toggle-btn" onclick="document.getElementById('theme-toggle-btn').click();" aria-label="Cycle HUD Theme">
+        <span class="theme-dot"></span>
+        <span class="theme-label">CYAN</span>
+      </button>
       <button class="cmd-palette-btn" onclick="document.getElementById('cmd-palette-btn').click();" aria-label="Open command palette">
         <span class="cmd-icon">⌘K</span>
         <span>Command HUD</span>
@@ -44,6 +60,14 @@
       <a href="contact.html" class="btn-sm">Send a message</a>
     </nav>
     <div class="header-actions">
+      <button class="resume-btn" id="resume-btn" aria-label="Open Official Resume & Dossier" title="View & Download Official CV / Resume">
+        <span class="cmd-icon">CV</span>
+        <span class="cmd-label">Resume</span>
+      </button>
+      <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Cycle Tactical Theme" title="Switch HUD Color Theme">
+        <span class="theme-dot"></span>
+        <span class="theme-label">CYAN</span>
+      </button>
       <button class="cmd-palette-btn" id="cmd-palette-btn" aria-label="Open command palette" title="Press Ctrl+K or Cmd+K">
         <span class="cmd-icon">⌘K</span>
         <span class="cmd-label">HUD</span>
@@ -93,9 +117,19 @@
       <div class="hero-inner">
         <!-- Left: eyebrow + headline + chips -->
         <div class="hero-left" id="hero-text">
-          <div class="status-pill">
-            <span class="status-dot"></span>
-            <span>Open to Internships &amp; Collabs</span>
+          <div class="hero-top-row">
+            <div class="status-pill">
+              <span class="status-dot"></span>
+              <span>Open to Internships &amp; Collabs</span>
+            </div>
+            <a href="resume.pdf" class="hero-cv-badge" id="hero-cv-badge" download="Arka_Datta_Resume.pdf" title="Download Official PDF CV">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>OFFICIAL CV [PDF]</span>
+            </a>
           </div>
           <span class="hero-eyebrow">Robotics Engineer &amp; Developer</span>
           <h1 class="hero-title"><span class="title-line">Arka</span><br><span class="title-line">Datta</span></h1>
@@ -678,6 +712,105 @@
         <span>ARKA DATTA // HUD v2.6</span>
       </div>
     </div>
+  </div>
+
+  <!-- ============================================================
+       EXECUTIVE DOSSIER & RESUME MODAL
+       ============================================================ -->
+  <div class="resume-modal-backdrop" id="resume-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+    <div class="resume-modal">
+      <div class="resume-modal-header">
+        <div class="resume-modal-title-wrap">
+          <span class="resume-modal-badge">OFFICIAL CANDIDATE DOSSIER</span>
+          <h2 class="resume-modal-title" id="resume-modal-title">Arka Datta // Executive Profile</h2>
+        </div>
+        <button class="resume-modal-close" id="resume-modal-close-btn" aria-label="Close dossier modal">✕</button>
+      </div>
+
+      <div class="resume-modal-body">
+        <!-- Quick Stats Strip -->
+        <div class="dossier-stats-strip">
+          <div class="dossier-stat">
+            <span class="dossier-stat-num">9.26</span>
+            <span class="dossier-stat-lbl">CGPA (SEM 4)</span>
+          </div>
+          <div class="dossier-stat">
+            <span class="dossier-stat-num">SIH '26</span>
+            <span class="dossier-stat-lbl">NMDC WINNER</span>
+          </div>
+          <div class="dossier-stat">
+            <span class="dossier-stat-num">6+</span>
+            <span class="dossier-stat-lbl">CORE SYSTEMS</span>
+          </div>
+          <div class="dossier-stat">
+            <span class="dossier-stat-num">DELHI</span>
+            <span class="dossier-stat-lbl">IST TIMEZONE</span>
+          </div>
+        </div>
+
+        <div class="dossier-section">
+          <span class="dossier-heading">// Professional Summary</span>
+          <p class="dossier-text">
+            Undergraduate Robotics &amp; Automation Engineer (B.Tech at USAR, GGSIPU) specialized in autonomous systems, LiDAR telemetry, ROS-driven mobile robots, and air-gapped web applications. Dual background across hardware kinematics, embedded C++, and full-stack TypeScript/Node.js web engineering.
+          </p>
+        </div>
+
+        <div class="dossier-section">
+          <span class="dossier-heading">// Flagship Production Systems</span>
+          <div class="dossier-projects-list">
+            <div><span class="dossier-proj-name">FogBot Autonomous Rover:</span> SIH 2026 NMDC Winner. Multi-sensor fusion (LiDAR, ultrasonic, IMU), obstacle avoidance, and browser-based 3D digital twin.</div>
+            <div><span class="dossier-proj-name">ZeroEgress:</span> Zero-network local media converter, client-side encryption, and native OS app distributor. Zero data leakage.</div>
+            <div><span class="dossier-proj-name">Miniature 4-DOF Robotic Arm:</span> Dual-mode master-slave analog telemetry + kinematics trajectory replication with ATmega328P.</div>
+          </div>
+        </div>
+
+        <div class="dossier-section">
+          <span class="dossier-heading">// Direct Contact Coordinates</span>
+          <div class="dossier-coords-row">
+            <div class="dossier-coord-item">
+              <span>arkadatta1531@gmail.com</span>
+              <button class="copy-coord-btn" data-copy="arkadatta1531@gmail.com" data-label="Email" title="Copy Email">
+                <span>📋</span> Copy
+              </button>
+            </div>
+            <div class="dossier-coord-item">
+              <span>+91 62972 49529</span>
+              <button class="copy-coord-btn" data-copy="+916297249529" data-label="Phone" title="Copy Phone">
+                <span>📋</span> Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-modal-footer">
+        <a href="resume.pdf" class="resume-action-btn primary" download="Arka_Datta_Resume.pdf" id="dossier-download-pdf">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download Official PDF (ATS Clean)
+        </a>
+        <a href="resume.html" target="_blank" rel="noopener noreferrer" class="resume-action-btn secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Open Web View
+        </a>
+        <button class="resume-action-btn secondary" id="dossier-copy-all-btn">
+          <span>📋</span> Copy Dossier Text
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tactical HUD Toast Notification -->
+  <div class="cyber-toast" id="cyber-toast" role="status" aria-live="polite">
+    <span class="toast-indicator"></span>
+    <span class="toast-msg" id="cyber-toast-msg">[✓] COPIED TO CLIPBOARD</span>
   </div>
 
   <!-- GSAP -->

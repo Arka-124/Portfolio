@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arka Datta — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 14mm;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #111827;
+      background: #ffffff;
+      line-height: 1.35;
+      font-size: 9pt;
+      -webkit-font-smoothing: antialiased;
+    }
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid #111827;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header-left h1 {
+      font-size: 20pt;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #000000;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    .header-left .title-sub {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: #0284c7;
+      margin-top: 2px;
+      letter-spacing: 0.2px;
+    }
+    .header-right {
+      text-align: right;
+      font-size: 8pt;
+      color: #4b5563;
+      line-height: 1.4;
+    }
+    .header-right a {
+      color: #111827;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .header-right a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3px;
+      font-size: 8.5pt;
+    }
+    .skill-row {
+      display: flex;
+      line-height: 1.35;
+    }
+    .skill-cat {
+      width: 145px;
+      font-weight: 700;
+      color: #1f2937;
+      flex-shrink: 0;
+    }
+    .skill-items {
+      color: #374151;
+    }
+
+    /* Experience & Projects */
+    .item {
+      margin-bottom: 8px;
+    }
+    .item:last-child {
+      margin-bottom: 0;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    .item-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .item-role {
+      font-weight: 600;
+      color: #0284c7;
+    }
+    .item-date {
+      font-size: 8pt;
+      font-weight: 600;
+      color: #64748b;
+    }
+    .item-desc {
+      font-size: 8.2pt;
+      color: #334155;
+      margin-top: 2px;
+      padding-left: 12px;
+    }
+    .item-desc li {
+      margin-bottom: 2px;
+      line-height: 1.32;
+    }
+    .item-desc li:last-child {
+      margin-bottom: 0;
+    }
+    .tech-pill {
+      font-size: 7.5pt;
+      font-family: monospace;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* Education */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 8.5pt;
+      margin-bottom: 2px;
+    }
+    .edu-left {
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .edu-right {
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+      }
+      .resume-container {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>Arka Datta</h1>
+        <div class="title-sub">Robotics Systems Architect &bull; Full-Stack Engineer</div>
+      </div>
+      <div class="header-right">
+        <div>New Delhi, India &bull; +91 62972 49529</div>
+        <div><a href="mailto:arkadatta1531@gmail.com">arkadatta1531@gmail.com</a></div>
+        <div>
+          <a href="https://arka-124.github.io/Portfolio/" target="_blank">Portfolio</a> &bull;
+          <a href="https://github.com/Arka-124" target="_blank">GitHub: @Arka-124</a> &bull;
+          <a href="https://www.linkedin.com/in/arka-datta-88a961381/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Education -->
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-item">
+        <div class="edu-left">B.Tech in Automation and Robotics &mdash; USAR, GGSIPU EDC, New Delhi</div>
+        <div class="edu-right">2023 &ndash; 2027 (3rd Year)</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-left">Kalyani Public School &mdash; Higher Secondary (Science &amp; CS)</div>
+        <div class="edu-right">Completed</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-left">St. Francis School &mdash; Foundations &amp; Secondary Schooling</div>
+        <div class="edu-right">Completed</div>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-cat">Robotics &amp; Embedded:</span>
+          <span class="skill-items">C, C++, ROS, Inverse &amp; Forward Kinematics, Arduino, Sensor Fusion (LiDAR, Ultrasonic, IR, IMU), PCA9685 I2C-PWM, Microcontroller Firmware</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Full-Stack &amp; Systems:</span>
+          <span class="skill-items">JavaScript (ES6+), TypeScript, Node.js, Express.js, React 19, HTML5 Canvas, WebGL / Three.js, MongoDB, MySQL, Docker, REST APIs, WebSockets</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">AI / ML &amp; Data:</span>
+          <span class="skill-items">Python, PyTorch, Scikit-learn, NLP, TF-IDF Vectorization, Cosine Similarity, Pandas, SQL, Tableau</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Engineering Tools:</span>
+          <span class="skill-items">Git / GitHub, Linux / POSIX Shell, Vite, Tailwind CSS, 3D Printing (PLA Prototyping), Wireshark Network Audit</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Engineering Projects -->
+    <section class="section">
+      <h2 class="section-title">Key Engineering Projects</h2>
+
+      <!-- FogBot -->
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">FogBot &mdash; Autonomous Pilot Rover &amp; IoT Command Center</span>
+            <span class="item-role">&bull; Smart India Hackathon 2026 (SIH26007 &ndash; NMDC Limited)</span>
+          </div>
+          <span class="item-date">SIH '26</span>
+        </div>
+        <ul class="item-desc">
+          <li><strong>Lead Systems Architect:</strong> Designed an autonomous leading scout rover navigating 15&ndash;25m ahead of 100t+ dumper trucks on steep hill-mine haul roads to mitigate zero-visibility monsoon collisions.</li>
+          <li><strong>Sensors &amp; Telemetry:</strong> Engineered dual HTML5 Canvas engines for live omnidirectional 1,500-point LiDAR radar scatter and real-time Time-To-Collision (TTC) convoy telemetry to eradicate tailgating.</li>
+          <li><strong>Digital Twin &amp; Safety:</strong> Built a 3D WebGL Three.js twin with volumetric FogExp2 shaders; implemented dynamic AI speed governing (0&ndash;35 km/h) and an instant emergency E-STOP interlock protocol.</li>
+          <li><strong>Stack:</strong> <span class="tech-pill">Three.js</span> <span class="tech-pill">Node.js</span> <span class="tech-pill">Express</span> <span class="tech-pill">LiDAR</span> <span class="tech-pill">Docker</span> <span class="tech-pill">MySQL</span></li>
+        </ul>
+      </div>
+
+      <!-- ZeroEgress -->
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">ZeroEgress &mdash; Air-Gapped File Utilities &amp; Local Compute Portal</span>
+            <span class="item-role">&bull; Lead Developer</span>
+          </div>
+          <span class="item-date">2026</span>
+        </div>
+        <ul class="item-desc">
+          <li><strong>Air-Gapped Processing:</strong> Developed a local-first file processing suite with Wireshark-verified 0 B/s outbound telemetry, closed sockets, and zero cloud server retention risk.</li>
+          <li><strong>Direct NVMe Streaming:</strong> Overcame strict 2GB WebAssembly heap limits by streaming data off NVMe in 64MB buffered chunks, processing multi-terabyte datasets with &lt;65MB RAM overhead.</li>
+          <li><strong>Distribution:</strong> Built signed multi-platform binaries (Windows, macOS, Linux, Android) with deterministic SHA-256 checksums and an offline Ed25519 asymmetric cryptographic license engine.</li>
+          <li><strong>Stack:</strong> <span class="tech-pill">React 19</span> <span class="tech-pill">TypeScript</span> <span class="tech-pill">Vite</span> <span class="tech-pill">Tailwind CSS</span> <span class="tech-pill">CLI Daemon</span></li>
+        </ul>
+      </div>
+
+      <!-- 4-DOF Robotic Arm -->
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Miniature 4-DOF Robotic Arm with Master&ndash;Slave Mimic Control</span>
+            <span class="item-role">&bull; Robotics Project</span>
+          </div>
+          <span class="item-date">2025</span>
+        </div>
+        <ul class="item-desc">
+          <li>Designed a compact 3D-printed 4-DOF arm driven by a potentiometer-based master-slave controller replicating angular motions in real time without runtime computer intervention.</li>
+          <li>Implemented Law of Cosines inverse kinematics firmware in C++ with boundary reachability validation; interfaced an Arduino Uno with PCA9685 I2C-PWM to drive MG996R servo actuators.</li>
+          <li><strong>Stack:</strong> <span class="tech-pill">Arduino</span> <span class="tech-pill">C++</span> <span class="tech-pill">PCA9685</span> <span class="tech-pill">Kinematics</span> <span class="tech-pill">3D Printing</span></li>
+        </ul>
+      </div>
+
+      <!-- Movie Review QA -->
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Conversational AI Agent for Movie Reviews</span>
+            <span class="item-role">&bull; IIT Kanpur AI/ML Project</span>
+          </div>
+          <span class="item-date">2025</span>
+        </div>
+        <ul class="item-desc">
+          <li>Built a FastAPI conversational agent answering natural-language queries via scikit-learn TF-IDF vectorization and cosine similarity ranking across movie review datasets.</li>
+          <li>Integrated asynchronous web scraping with aiohttp, BeautifulSoup, and rotating user agents with automated text cleaning and cached vector storage.</li>
+          <li><strong>Stack:</strong> <span class="tech-pill">Python</span> <span class="tech-pill">FastAPI</span> <span class="tech-pill">Scikit-learn</span> <span class="tech-pill">NLP</span> <span class="tech-pill">Pandas</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Experience & Internships -->
+    <section class="section">
+      <h2 class="section-title">Experience &amp; Certifications</h2>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Team Track Decoders &mdash; Robotics Systems Architect &amp; Dev</span>
+          </div>
+          <span class="item-date">2025 &ndash; Present</span>
+        </div>
+        <p class="item-desc" style="padding-left: 0; margin-top: 1px;">Architecting autonomous haul-road scout rovers for NMDC Limited problem statement (SIH26007); sensor fusion &amp; teleoperation telemetry.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">IIT Kanpur &mdash; AI / ML Internship</span>
+          </div>
+          <span class="item-date">Internship</span>
+        </div>
+        <p class="item-desc" style="padding-left: 0; margin-top: 1px;">Completed intensive AI/ML program covering deep learning, computer vision, and NLP model implementation using PyTorch and scikit-learn.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">IBM &mdash; Big Data Management Internship</span>
+          </div>
+          <span class="item-date">Internship</span>
+        </div>
+        <p class="item-desc" style="padding-left: 0; margin-top: 1px;">Analyzed large structured datasets, designed relational SQL schemas, and built executive Tableau analytical dashboards.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Harvard University &mdash; CS50x: Introduction to Computer Science</span>
+          </div>
+          <span class="item-date">Credential</span>
+        </div>
+        <p class="item-desc" style="padding-left: 0; margin-top: 1px;">Rigorous foundations in algorithms, data structures, memory management, C, Python, SQL, and web technologies.</p>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

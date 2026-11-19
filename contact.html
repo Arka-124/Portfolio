@@ -6,11 +6,20 @@
   <meta name="description" content="Get in touch with Arka Datta — Full-Stack Web Developer &amp; Robotics Engineer.">
   <title>Contact — Arka</title>
   <link rel="icon" type="image/png" href="logo/Layerstop_4-removebg-preview.png">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('arka_portfolio_theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="cursor.css">
   <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="interactive.css">
 </head>
 <body>
   <div class="cursor-dot"></div>
@@ -20,20 +29,49 @@
   <div class="wrapper">
     <div class="grid-container">
 
-      <!-- Top bar: back arrow -->
+      <!-- Top bar: back arrow & resume link -->
       <div class="header-bar">
-        <a href="index.html" aria-label="Back to Home" style="color: var(--text); display: flex; align-items: center;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        <a href="index.html" aria-label="Back to Home" style="color: var(--text); display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-weight: 600;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
+          <span style="font-size: 0.82rem; letter-spacing: 0.5px; font-family: 'Space Grotesk', monospace;">SYS.HOME</span>
+        </a>
+        <a href="resume.pdf" download="Arka_Datta_Resume.pdf" class="hero-cv-badge" style="text-decoration: none;" title="Download Official PDF Resume">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>OFFICIAL CV [PDF]</span>
         </a>
       </div>
 
       <!-- Hero title -->
       <div class="hero-title">
         <h1>Let's Connect</h1>
+      </div>
+
+      <!-- Official Dossier & Resume Bar -->
+      <div class="grid-item resume-banner-card" style="grid-column: span 4; background: rgba(0, 240, 255, 0.03); border-top: 1px solid var(--accent-border, rgba(0, 240, 255, 0.25)); border-bottom: 1px solid var(--accent-border, rgba(0, 240, 255, 0.25)); min-height: auto; padding: 1.25rem 2rem; flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00f0ff); box-shadow: 0 0 10px var(--accent, #00f0ff); flex-shrink: 0;"></div>
+          <div>
+            <div style="font-family: 'Space Grotesk', monospace; font-size: 0.72rem; color: var(--accent, #00f0ff); font-weight: 700; letter-spacing: 1px;">OFFICIAL CANDIDATE CREDENTIALS</div>
+            <div style="font-size: 0.95rem; font-weight: 600; color: var(--text); margin-top: 0.15rem;">Arka Datta — Executive Resume &amp; Portfolio Dossier (1-Page ATS Clean)</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+          <a href="resume.pdf" download="Arka_Datta_Resume.pdf" class="resume-action-btn primary" style="text-decoration: none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download PDF
+          </a>
+          <a href="resume.html" target="_blank" rel="noopener noreferrer" class="resume-action-btn secondary" style="text-decoration: none;">
+            Web View
+          </a>
+        </div>
       </div>
 
       <!-- Name card -->
@@ -61,13 +99,18 @@
             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
           </svg>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arkadatta1531@gmail.com"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="detail-text"
-             style="font-size: 0.9rem; word-break: break-all; text-decoration: none; color: inherit; position: relative; z-index: 10;">
-            arkadatta1531@gmail.com
-          </a>
+          <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arkadatta1531@gmail.com"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="detail-text"
+               style="font-size: 0.9rem; word-break: break-all; text-decoration: none; color: inherit; position: relative; z-index: 10;">
+              arkadatta1531@gmail.com
+            </a>
+            <button class="copy-coord-btn" data-copy="arkadatta1531@gmail.com" data-label="Email" title="Copy Email">
+              <span>📋</span> Copy
+            </button>
+          </div>
           <p class="sub-text">For professional correspondence, kindly reach out via email.</p>
         </div>
       </div>
@@ -90,7 +133,12 @@
             <rect x="9.5" y="16"  width="5" height="5"></rect>
             <rect x="16"  y="16"  width="5" height="5"></rect>
           </svg>
-          <p class="detail-text">+91 62972 49529</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <p class="detail-text" style="margin: 0;">+91 62972 49529</p>
+            <button class="copy-coord-btn" data-copy="+916297249529" data-label="Phone" title="Copy Phone">
+              <span>📋</span> Copy
+            </button>
+          </div>
           <p class="sub-text">Call availability is minimal; email remains the primary channel.</p>
         </div>
       </div>
@@ -209,5 +257,101 @@
     </div>
   </div>
 
+  <!-- Tactical HUD Toast Notification -->
+  <div class="cyber-toast" id="cyber-toast" role="status" aria-live="polite">
+    <span class="toast-indicator"></span>
+    <span class="toast-msg" id="cyber-toast-msg">[✓] COPIED TO CLIPBOARD</span>
+  </div>
+
+  <script>
+    (function () {
+      let audioCtx = null;
+      function initAudio() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) audioCtx = new AudioContextClass();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume().catch(() => {});
+        }
+      }
+
+      function playSuccessArpeggio() {
+        initAudio();
+        if (!audioCtx) return;
+        try {
+          if (audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
+          const notes = [1046.5, 1318.5, 1567.98];
+          notes.forEach((freq, idx) => {
+            const start = audioCtx.currentTime + idx * 0.04;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, start);
+            gain.gain.setValueAtTime(0.045, start);
+            gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.08);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(start);
+            osc.stop(start + 0.08);
+          });
+        } catch {}
+      }
+
+      let toastTimer = null;
+      function showCyberToast(msg) {
+        const toast = document.getElementById('cyber-toast');
+        const toastMsg = document.getElementById('cyber-toast-msg');
+        if (!toast) return;
+        if (toastMsg) toastMsg.textContent = msg;
+        toast.classList.add('show');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2400);
+      }
+
+      function copyText(text, label) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            playSuccessArpeggio();
+            showCyberToast('[✓] COPIED ' + label.toUpperCase());
+          }).catch(() => fallback(text, label));
+        } else {
+          fallback(text, label);
+        }
+      }
+
+      function fallback(text, label) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try {
+          document.execCommand('copy');
+          playSuccessArpeggio();
+          showCyberToast('[✓] COPIED ' + label.toUpperCase());
+        } catch {
+          showCyberToast('[!] FAILED TO COPY');
+        }
+        document.body.removeChild(ta);
+      }
+
+      document.querySelectorAll('.copy-coord-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const t = btn.getAttribute('data-copy');
+          const l = btn.getAttribute('data-label') || 'Coordinate';
+          if (t) copyText(t, l);
+        });
+      });
+
+      ['pointerdown', 'click', 'keydown', 'touchstart'].forEach(e => {
+        window.addEventListener(e, initAudio, { passive: true });
+      });
+    })();
+  </script>
 </body>
 </html>

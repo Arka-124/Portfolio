@@ -18,7 +18,9 @@
 }
 
 .cmd-palette-btn,
-.sfx-toggle-btn {
+.sfx-toggle-btn,
+.theme-toggle-btn,
+.resume-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -34,14 +36,38 @@
   font-weight: 600;
   cursor: pointer;
   transition: all var(--speed) ease;
+  user-select: none;
 }
 
 .cmd-palette-btn:hover,
-.sfx-toggle-btn:hover {
+.sfx-toggle-btn:hover,
+.theme-toggle-btn:hover,
+.resume-btn:hover {
   color: var(--text);
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(0, 229, 255, 0.35);
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+  border-color: var(--accent-border);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.resume-btn {
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.resume-btn:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.theme-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  display: inline-block;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cmd-icon {
@@ -56,9 +82,9 @@
 }
 
 .sfx-toggle-btn.sfx-active {
-  border-color: rgba(0, 229, 255, 0.5);
-  color: #00e5ff;
-  box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+  border-color: var(--accent-border);
+  color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-dim);
 }
 
 /* ============================================================
@@ -480,11 +506,15 @@
     margin-right: 0.75rem;
   }
   .cmd-label,
-  .sfx-label {
+  .sfx-label,
+  .theme-label,
+  .resume-btn .cmd-label {
     display: none;
   }
   .cmd-palette-btn,
-  .sfx-toggle-btn {
+  .sfx-toggle-btn,
+  .theme-toggle-btn,
+  .resume-btn {
     padding: 0.4rem 0.6rem;
   }
   .cmd-palette-backdrop {
@@ -505,4 +535,303 @@
     padding: 0.4rem 0.65rem;
     font-size: 0.7rem;
   }
+  .dossier-stats-strip {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* ============================================================
+   7. EXECUTIVE DOSSIER / RESUME MODAL
+   ============================================================ */
+.resume-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.resume-modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.resume-modal {
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  background: rgba(14, 15, 18, 0.96);
+  border: 1px solid var(--accent-border);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 45px var(--accent-dim);
+  border-radius: 20px;
+  overflow-y: auto;
+  transform: translateY(-20px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-modal-backdrop.open .resume-modal {
+  transform: translateY(0) scale(1);
+}
+
+.resume-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem 1.75rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.resume-modal-badge {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.resume-modal-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.resume-modal-subtitle {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.resume-modal-close {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+  font-size: 1.4rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.resume-modal-close:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.08);
+}
+
+.resume-modal-body {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+}
+
+.dossier-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 0.9rem;
+}
+
+.dossier-stat {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.dossier-stat-num {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: 'Space Grotesk', monospace;
+}
+
+.dossier-stat-lbl {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.dossier-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.dossier-heading {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+.dossier-text {
+  font-size: 0.85rem;
+  color: rgba(240, 237, 232, 0.85);
+  line-height: 1.5;
+}
+
+.dossier-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(240, 237, 232, 0.85);
+}
+
+.dossier-proj-name {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.dossier-coords-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dossier-coord-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.copy-coord-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+  color: var(--text);
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-coord-btn:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.resume-modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.35);
+  flex-wrap: wrap;
+}
+
+.resume-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resume-action-btn.primary {
+  background: var(--accent);
+  color: #000000;
+  border: 1px solid var(--accent);
+  font-weight: 700;
+}
+
+.resume-action-btn.primary:hover {
+  box-shadow: 0 0 16px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.resume-action-btn.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.resume-action-btn.secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ============================================================
+   8. CYBER TOAST NOTIFICATION
+   ============================================================ */
+.cyber-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(12, 14, 18, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
+  padding: 0.65rem 1.1rem;
+  border-radius: 10px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.8rem;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  flex-shrink: 0;
 }

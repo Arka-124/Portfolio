@@ -87,6 +87,54 @@
     }
   }
 
+  function playThemeChime() {
+    if (!sfxEnabled) return;
+    initAudio();
+    if (!audioCtx) return;
+    try {
+      if (audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.14);
+    } catch {
+      // AudioContext fallback
+    }
+  }
+
+  function playSuccessArpeggio() {
+    if (!sfxEnabled) return;
+    initAudio();
+    if (!audioCtx) return;
+    try {
+      if (audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
+      const notes = [1046.5, 1318.5, 1567.98]; // C6, E6, G6
+      notes.forEach((freq, idx) => {
+        const start = audioCtx.currentTime + idx * 0.04;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, start);
+        gain.gain.setValueAtTime(0.045, start);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.08);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(start);
+        osc.stop(start + 0.08);
+      });
+    } catch {
+      // AudioContext fallback
+    }
+  }
+
   function updateSfxToggleBtn() {
     const sfxBtn = document.getElementById('sfx-toggle-btn');
     if (!sfxBtn) return;
@@ -114,7 +162,191 @@
   }
 
   /* ============================================================
-     2. COMMAND PALETTE (CTRL+K / CMD+K)
+     TOAST NOTIFICATION ENGINE
+     ============================================================ */
+  let toastTimer = null;
+  function showCyberToast(msg) {
+    const toast = document.getElementById('cyber-toast');
+    const toastMsg = document.getElementById('cyber-toast-msg');
+    if (!toast) return;
+    if (toastMsg) toastMsg.textContent = msg;
+    toast.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2400);
+  }
+
+  function fallbackCopy(text, label) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      document.execCommand('copy');
+      playSuccessArpeggio();
+      showCyberToast(`[✓] COPIED ${label.toUpperCase()}`);
+    } catch {
+      showCyberToast(`[!] FAILED TO COPY`);
+    }
+    document.body.removeChild(ta);
+  }
+
+  function copyToClipboard(text, label) {
+    initAudio();
+    const cleanText = text.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(cleanText).then(() => {
+        playSuccessArpeggio();
+        showCyberToast(`[✓] COPIED ${label.toUpperCase()}`);
+      }).catch(() => {
+        fallbackCopy(cleanText, label);
+      });
+    } else {
+      fallbackCopy(cleanText, label);
+    }
+  }
+
+  /* ============================================================
+     TACTICAL HUD THEMES
+     ============================================================ */
+  const THEMES = ['cyan', 'amber', 'green', 'mono'];
+  const THEME_NAMES = {
+    cyan: 'CYAN',
+    amber: 'AMBER',
+    green: 'MATRIX',
+    mono: 'MONO'
+  };
+
+  function getCurrentTheme() {
+    return localStorage.getItem('arka_portfolio_theme') || 'cyan';
+  }
+
+  function applyTheme(themeName, playSound = false) {
+    const valid = THEMES.includes(themeName) ? themeName : 'cyan';
+    document.documentElement.setAttribute('data-theme', valid);
+    localStorage.setItem('arka_portfolio_theme', valid);
+
+    document.querySelectorAll('.theme-label').forEach((el) => {
+      el.textContent = THEME_NAMES[valid];
+    });
+
+    if (playSound) {
+      playThemeChime();
+      showCyberToast(`[✓] HUD THEME: ${THEME_NAMES[valid]}`);
+    }
+  }
+
+  function cycleTheme() {
+    const current = getCurrentTheme();
+    const nextIdx = (THEMES.indexOf(current) + 1) % THEMES.length;
+    applyTheme(THEMES[nextIdx], true);
+  }
+
+  function initTheme() {
+    applyTheme(getCurrentTheme(), false);
+    const themeBtns = document.querySelectorAll('.theme-toggle-btn');
+    themeBtns.forEach((btn) => {
+      btn.addEventListener('click', cycleTheme);
+      btn.addEventListener('mouseenter', playHover);
+    });
+  }
+
+  /* ============================================================
+     OFFICIAL RESUME & EXECUTIVE DOSSIER SUITE
+     ============================================================ */
+  function openResumeModal() {
+    initAudio();
+    playClick();
+    const backdrop = document.getElementById('resume-modal-backdrop');
+    if (backdrop) {
+      backdrop.classList.add('open');
+      backdrop.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeResumeModal() {
+    const backdrop = document.getElementById('resume-modal-backdrop');
+    if (backdrop) {
+      backdrop.classList.remove('open');
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      playClick();
+    }
+  }
+
+  function initResumeModal() {
+    const resumeBtns = document.querySelectorAll('.resume-btn');
+    resumeBtns.forEach((btn) => {
+      btn.addEventListener('click', openResumeModal);
+      btn.addEventListener('mouseenter', playHover);
+    });
+
+    const heroCvBadge = document.getElementById('hero-cv-badge');
+    if (heroCvBadge) {
+      heroCvBadge.addEventListener('click', (e) => {
+        e.preventDefault();
+        openResumeModal();
+      });
+      heroCvBadge.addEventListener('mouseenter', playHover);
+    }
+
+    const closeBtn = document.getElementById('resume-modal-close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeResumeModal);
+    }
+
+    const backdrop = document.getElementById('resume-modal-backdrop');
+    if (backdrop) {
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) closeResumeModal();
+      });
+    }
+
+    const copyAllBtn = document.getElementById('dossier-copy-all-btn');
+    if (copyAllBtn) {
+      copyAllBtn.addEventListener('click', () => {
+        const text = `ARKA DATTA — ROBOTICS ENGINEER & FULL-STACK DEVELOPER
+Email: arkadatta1531@gmail.com | Phone: +91 62972 49529
+Location: New Delhi, India | Portfolio: https://arka-124.github.io/Portfolio/
+GitHub: https://github.com/Arka-124 | LinkedIn: https://www.linkedin.com/in/arka-datta-88a961381/
+
+EDUCATION:
+- B.Tech in Automation and Robotics (2023 - 2027)
+  University School of Automation and Robotics (USAR), GGSIPU, Delhi (CGPA: 9.26)
+
+EXPERIENCE & HONORS:
+- Winner: Smart India Hackathon (SIH) 2026 — NMDC Limited (Autonomous Scout Rover "FogBot")
+- AI/ML Research Intern: IIT Kanpur (FastAPI, Scikit-Learn, NLP)
+- IBM SkillsBuild AI & Data Intern
+
+FLAGSHIP PROJECTS:
+1. FogBot (Autonomous Pilot Rover): Multi-sensor fusion (LiDAR, ultrasonic, IMU), obstacle avoidance, 3D WebGL twin.
+2. ZeroEgress: Local air-gapped file utilities with zero network telemetry.
+3. 4-DOF Robotic Arm: Dual-mode potentiometer mimic telemetry with ATmega328P.`;
+        copyToClipboard(text, 'Full Dossier');
+      });
+    }
+
+    // Bind all copy-coord buttons across the document
+    document.querySelectorAll('.copy-coord-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const copyText = btn.getAttribute('data-copy');
+        const label = btn.getAttribute('data-label') || 'Coordinate';
+        if (copyText) {
+          copyToClipboard(copyText, label);
+        }
+      });
+    });
+  }
+
+  /* ============================================================
+     5. COMMAND PALETTE (CTRL+K / CMD+K)
      ============================================================ */
   const COMMAND_ITEMS = [
     {
@@ -191,6 +423,17 @@
     },
     {
       group: 'Quick Links',
+      id: 'link-resume-modal',
+      title: 'Executive Resume & Candidate Dossier',
+      desc: 'Open official ATS resume, verified credentials & direct PDF download',
+      badge: 'Official CV',
+      action: () => {
+        closeCommandPalette();
+        openResumeModal();
+      }
+    },
+    {
+      group: 'Quick Links',
       id: 'link-contact',
       title: "Let's Connect (Contact Page)",
       desc: 'Direct correspondence, email, and social coordinates',
@@ -250,6 +493,141 @@
       action: () => {
         toggleSfx();
         return `AUDIO SFX: ${sfxEnabled ? 'ENABLED' : 'MUTED'}`;
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-resume',
+      title: 'resume',
+      desc: 'Open official candidate dossier & download ATS PDF',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        setTimeout(() => {
+          closeCommandPalette();
+          openResumeModal();
+        }, 300);
+        return 'OPENING EXECUTIVE RESUME & OFFICIAL DOSSIER SUITE...';
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-cv',
+      title: 'cv',
+      desc: 'Alias for resume — open candidate dossier',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        setTimeout(() => {
+          closeCommandPalette();
+          openResumeModal();
+        }, 300);
+        return 'OPENING EXECUTIVE RESUME & OFFICIAL DOSSIER SUITE...';
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-theme-cycle',
+      title: 'theme',
+      desc: 'Cycle HUD tactical theme [cyan -> amber -> green -> mono]',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        cycleTheme();
+        return `THEME SWITCHED -> ${getCurrentTheme().toUpperCase()}`;
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-theme-cyan',
+      title: 'theme cyan',
+      desc: 'Set HUD palette to Cyber Cyan (Default)',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        applyTheme('cyan', true);
+        return 'HUD THEME SET: CYBER CYAN (#00f0ff)';
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-theme-amber',
+      title: 'theme amber',
+      desc: 'Set HUD palette to Tactical Amber',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        applyTheme('amber', true);
+        return 'HUD THEME SET: TACTICAL AMBER (#ffb000)';
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-theme-green',
+      title: 'theme green',
+      desc: 'Set HUD palette to Matrix Green',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        applyTheme('green', true);
+        return 'HUD THEME SET: MATRIX GREEN (#00ff66)';
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-theme-mono',
+      title: 'theme mono',
+      desc: 'Set HUD palette to Pure Monochrome',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        applyTheme('mono', true);
+        return 'HUD THEME SET: PURE MONOCHROME (#ffffff)';
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-copy-email',
+      title: 'copy email',
+      desc: 'Copy arkadatta1531@gmail.com to clipboard',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        copyToClipboard('arkadatta1531@gmail.com', 'Email');
+        return 'COPIED TO CLIPBOARD: arkadatta1531@gmail.com';
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-copy-phone',
+      title: 'copy phone',
+      desc: 'Copy +91 62972 49529 to clipboard',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        copyToClipboard('+916297249529', 'Phone');
+        return 'COPIED TO CLIPBOARD: +91 62972 49529';
+      }
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-sudo',
+      title: 'sudo',
+      desc: 'Execute tactical override with root privileges',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => '[AUTHENTICATED] Welcome, Operator Arka. Tactical control unlocked. ZeroEgress security protocol bypass not permitted.'
+    },
+    {
+      group: 'Terminal Commands',
+      id: 'cmd-matrix',
+      title: 'matrix',
+      desc: 'Follow the white rabbit into the digital construct',
+      badge: 'CLI Command',
+      isTerminal: true,
+      action: () => {
+        applyTheme('green', true);
+        return 'WAKE UP, NEO...\nHUD shifted to Matrix Green. The construct is active.';
       }
     }
   ];
@@ -1035,9 +1413,15 @@
         if (bd && bd.classList.contains('open')) {
           closeCommandPalette();
         }
+        const rbd = document.getElementById('resume-modal-backdrop');
+        if (rbd && rbd.classList.contains('open')) {
+          closeResumeModal();
+        }
       }
     });
 
+    initTheme();
+    initResumeModal();
     initProjectFilters();
     initCardTilt();
     initStackInspector();
