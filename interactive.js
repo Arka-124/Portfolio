@@ -9,7 +9,8 @@ import {
   initRadarProximity,
   initRadarClickPing,
   initMagneticHeroChips,
-  initHeroTextScramble
+  initHeroTextScramble,
+  initLogoReturnToTop
 } from './modules/hero.js';
 import { initAboutSpotlight, initAboutActionPills, initTileHoverSfx } from './modules/about.js';
 
@@ -26,6 +27,7 @@ function initAll() {
   initRadarClickPing();
   initMagneticHeroChips();
   initHeroTextScramble();
+  initLogoReturnToTop();
   initAboutSpotlight();
   initAboutActionPills();
   initTileHoverSfx();

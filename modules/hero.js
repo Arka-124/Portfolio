@@ -204,3 +204,14 @@ export function initHeroTextScramble() {
     });
   }
 }
+
+export function initLogoReturnToTop() {
+  document.querySelectorAll('.logo').forEach((logo) => {
+    logo.addEventListener('click', (e) => {
+      e.preventDefault();
+      playClick();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    logo.addEventListener('mouseenter', playHover);
+  });
+}

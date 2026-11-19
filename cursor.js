@@ -76,7 +76,7 @@ if (!isTouchDevice && cursorDot && cursorOutline) {
     '.floating-badge', '.social-link', '.copy-btn', '.back-arrow',
     '.hero-title', '.hero-eyebrow', '.about-action-pill', '.timeline-item',
     '.resume-btn', '.resume-modal-close', '.resume-action-btn', '.copy-coord-btn',
-    '.hero-cv-badge', '.theme-toggle-btn', '.dossier-stat'
+    '.hero-cv-badge', '.theme-toggle-btn', '.dossier-stat', '.logo'
   ].join(', ');
 
   document.addEventListener('mouseover', (e) => {

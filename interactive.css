@@ -12,6 +12,7 @@
    1. HEADER HUD CONTROLS (CMD+K & SFX)
    ============================================================ */
 .header-actions {
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -500,16 +501,25 @@
 /* ============================================================
    6. RESPONSIVE ADJUSTMENTS
    ============================================================ */
-@media (max-width: 600px) {
-  .header-actions {
-    margin-left: auto;
-    margin-right: 0.75rem;
-  }
+@media (max-width: 960px) {
   .cmd-label,
   .sfx-label,
   .theme-label,
   .resume-btn .cmd-label {
     display: none;
+  }
+  .cmd-palette-btn,
+  .sfx-toggle-btn,
+  .theme-toggle-btn,
+  .resume-btn {
+    padding: 0.45rem 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-actions {
+    margin-left: auto;
+    margin-right: 0.75rem;
   }
   .cmd-palette-btn,
   .sfx-toggle-btn,
