@@ -59,7 +59,7 @@ Location: New Delhi, India | Portfolio: https://arka-124.github.io/Portfolio/
 GitHub: https://github.com/Arka-124 | LinkedIn: https://www.linkedin.com/in/arka-datta-88a961381/
 
 EDUCATION:
-- B.Tech in Automation and Robotics (2023 - 2027)
+- B.Tech in Automation and Robotics (2024 - 2028)
   University School of Automation and Robotics (USAR), GGSIPU, Delhi (CGPA: 9.26)
 
 EXPERIENCE & HONORS:
