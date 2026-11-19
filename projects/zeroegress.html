@@ -138,6 +138,39 @@
         </div>
       </div>
 
+      <!-- Live Web Application Preview -->
+      <div class="grid-item live-preview-section">
+        <div class="label-row" style="margin-bottom: 1.25rem;">
+          <span style="display: flex; align-items: center; gap: 0.55rem;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; display: inline-block; box-shadow: 0 0 10px #00f0ff; animation: live-pulse 2s infinite ease-in-out;"></span>
+            Live Application Sandbox &bull; Air-Gapped Egress Testing
+          </span>
+          <a href="https://zero-egress.vercel.app/" target="_blank" rel="noopener noreferrer" class="preview-external-link" style="color: var(--accent); text-decoration: none; font-size: 0.75rem; display: flex; align-items: center; gap: 0.4rem; font-family: monospace;">
+            <span>zero-egress.vercel.app</span> &rarr;
+          </a>
+        </div>
+        <div class="preview-browser-frame">
+          <div class="preview-browser-header">
+            <div class="browser-controls">
+              <span class="ctrl-dot dot-close"></span>
+              <span class="ctrl-dot dot-min"></span>
+              <span class="ctrl-dot dot-max"></span>
+            </div>
+            <div class="browser-address-bar">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; margin-right: 6px;">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>https://zero-egress.vercel.app/</span>
+            </div>
+            <a href="https://zero-egress.vercel.app/" target="_blank" rel="noopener noreferrer" class="browser-action-btn" title="Open in new window">
+              <span>Open ↗</span>
+            </a>
+          </div>
+          <iframe src="https://zero-egress.vercel.app/" title="ZeroEgress Live Web Application" loading="lazy" class="preview-iframe" allow="clipboard-write; fullscreen"></iframe>
+        </div>
+      </div>
+
       <!-- Bottom left: features & tag list -->
       <div class="grid-item bottom-left">
         <span class="section-title">Key Architectural Highlights</span>

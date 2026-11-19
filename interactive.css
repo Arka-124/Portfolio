@@ -1,0 +1,508 @@
+:root {
+  --glare-opacity: 0;
+  --glare-x: 50%;
+  --glare-y: 50%;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --radar-glow: 0.25;
+  --radar-speed: 18s;
+}
+
+/* ============================================================
+   1. HEADER HUD CONTROLS (CMD+K & SFX)
+   ============================================================ */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cmd-palette-btn,
+.sfx-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 0.45rem 0.9rem;
+  color: var(--muted);
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--speed) ease;
+}
+
+.cmd-palette-btn:hover,
+.sfx-toggle-btn:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+}
+
+.cmd-icon {
+  display: inline-block;
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+.sfx-toggle-btn.sfx-active {
+  border-color: rgba(0, 229, 255, 0.5);
+  color: #00e5ff;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+}
+
+/* ============================================================
+   2. COMMAND PALETTE MODAL
+   ============================================================ */
+.cmd-palette-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(3rem, 12vh, 8rem) 1.5rem 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.cmd-palette-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cmd-palette-modal {
+  width: 100%;
+  max-width: 640px;
+  background: rgba(12, 14, 18, 0.94);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 229, 255, 0.15);
+  border-radius: 20px;
+  overflow: hidden;
+  transform: translateY(-20px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.cmd-palette-backdrop.open .cmd-palette-modal {
+  transform: translateY(0) scale(1);
+}
+
+.cmd-search-wrap {
+  display: flex;
+  align-items: center;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.85rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cmd-search-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.cmd-search-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 1rem;
+}
+
+.cmd-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.cmd-results-list {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.cmd-results-list::-webkit-scrollbar {
+  width: 6px;
+}
+.cmd-results-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.cmd-group-label {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(0, 229, 255, 0.75);
+  padding: 0.6rem 0.9rem 0.3rem;
+  font-weight: 700;
+}
+
+.cmd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.15s ease;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
+.cmd-item:hover,
+.cmd-item.selected {
+  background: rgba(0, 229, 255, 0.12);
+  color: #ffffff;
+  border-left: 3px solid var(--accent);
+  padding-left: calc(0.9rem - 3px);
+}
+
+.cmd-item-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cmd-item-title {
+  font-weight: 600;
+}
+
+.cmd-item-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-left: 0.5rem;
+}
+
+.cmd-item-badge {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+}
+
+.cmd-terminal-box {
+  background: #050608;
+  border-top: 1px solid rgba(0, 229, 255, 0.2);
+  padding: 1rem 1.4rem;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.8rem;
+  color: #00e5ff;
+  line-height: 1.5;
+  max-height: 160px;
+  overflow-y: auto;
+  display: none;
+}
+
+.cmd-terminal-box.visible {
+  display: block;
+}
+
+.cmd-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.4rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.cmd-footer-keys {
+  display: flex;
+  gap: 1rem;
+}
+
+.cmd-footer-keys kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================================
+   3. PROJECT FILTER TABS & 3D GLARE TILT
+   ============================================================ */
+.projects-header-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .projects-header-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.project-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-tab {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 0.45rem 1rem;
+  color: var(--muted);
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter-tab:hover {
+  color: var(--text);
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.filter-tab.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.filter-count {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-left: 0.25rem;
+}
+
+/* 3D tilt & specular glare */
+.project-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transform: perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--glare-x) var(--glare-y), rgba(0, 229, 255, 0.18), transparent 60%);
+  pointer-events: none;
+  opacity: var(--glare-opacity);
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.project-card.is-hidden {
+  display: none !important;
+}
+
+.project-card.highlight-pulse {
+  animation: card-pulse 1.8s ease-in-out infinite;
+  border-color: #00e5ff !important;
+}
+
+@keyframes card-pulse {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 229, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 229, 255, 0.5);
+  }
+}
+
+/* ============================================================
+   4. TECH STACK CROSS-LINK INSPECTOR
+   ============================================================ */
+.stack-icon-item {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.stack-icon-item.active-tech {
+  filter: drop-shadow(0 0 14px rgba(0, 229, 255, 0.85));
+  transform: translateY(-5px) scale(1.08);
+}
+
+.stack-icon-item.active-tech .stack-icon-label {
+  opacity: 1 !important;
+  color: #00e5ff !important;
+  font-weight: 700;
+}
+
+.stack-inspector-card {
+  margin-top: 1.5rem;
+  background: rgba(12, 14, 18, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: fade-in-up 0.3s ease-out;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.inspector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.inspector-tech-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.inspector-role-badge {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  color: #00e5ff;
+}
+
+.inspector-desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.inspector-projects-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.inspector-projects-label {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  margin-right: 0.25rem;
+}
+
+.tech-project-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.tech-project-chip:hover {
+  background: rgba(0, 229, 255, 0.15);
+  border-color: #00e5ff;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   5. LIVE TELEMETRY, RADAR PROXIMITY & CURSOR RADAR PING
+   ============================================================ */
+.hero-radar {
+  animation: rotate-radar var(--radar-speed) linear infinite !important;
+  transition: filter 0.3s ease, border-color 0.3s ease;
+}
+
+.hero-radar.proximity-active {
+  filter: drop-shadow(0 0 calc(20px * var(--radar-glow)) #00e5ff);
+}
+
+/* ============================================================
+   6. RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 600px) {
+  .header-actions {
+    margin-left: auto;
+    margin-right: 0.75rem;
+  }
+  .cmd-label,
+  .sfx-label {
+    display: none;
+  }
+  .cmd-palette-btn,
+  .sfx-toggle-btn {
+    padding: 0.4rem 0.6rem;
+  }
+  .cmd-palette-backdrop {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+  .cmd-palette-modal {
+    max-height: 85vh;
+  }
+  .cmd-footer-keys {
+    display: none;
+  }
+  .project-filter-tabs {
+    width: 100%;
+  }
+  .filter-tab {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.7rem;
+  }
+}

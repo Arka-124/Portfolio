@@ -507,6 +507,55 @@ a   { text-decoration: none; color: inherit; }
   background: rgba(0, 240, 255, 0.04);
 }
 
+.hero-chip.magnetic {
+  cursor: pointer;
+  will-change: transform;
+  transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.3, 1), background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.hero-chip.magnetic:hover {
+  border-color: rgba(0, 240, 255, 0.7);
+  background: rgba(0, 240, 255, 0.09);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.22);
+}
+
+.hero-chip.magnetic:active {
+  transform: scale(0.95) !important;
+}
+
+.hero-title,
+.hero-eyebrow {
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.title-line {
+  display: inline-block;
+  will-change: transform;
+}
+
+.hero-title.is-glitching,
+.hero-eyebrow.is-glitching {
+  animation: cyber-glitch-skew 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  text-shadow:
+    -1.5px 0 0 rgba(0, 240, 255, 0.8),
+     1.5px 0 0 rgba(255, 30, 86, 0.65);
+}
+
+@keyframes cyber-glitch-skew {
+  0%   { transform: translate(0); }
+  20%  { transform: translate(-2px, 0.5px) skewX(-1.2deg); }
+  40%  { transform: translate(1.5px, -0.5px) skewX(0.8deg); }
+  60%  { transform: translate(-1px, 0); }
+  80%  { transform: translate(1px, 0); }
+  100% { transform: translate(0); }
+}
+
+.scramble-active {
+  color: #00f0ff !important;
+  text-shadow: 0 0 14px rgba(0, 240, 255, 0.7);
+}
+
 .hero-chip svg { flex-shrink: 0; color: var(--accent); }
 
 .status-pill {
