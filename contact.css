@@ -90,6 +90,37 @@ body {
 }
 .header-bar a:hover { color: var(--accent); }
 
+/* Header CV badge */
+.hero-cv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.4px;
+}
+
+.hero-cv-badge:hover {
+  background: var(--accent);
+  color: #000000;
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.hero-cv-badge:active {
+  transform: translateY(1px);
+}
+
 /* Big title */
 .hero-title {
   grid-column: span 4;
@@ -113,6 +144,66 @@ h1 {
   white-space: normal;
   word-wrap: break-word;
   padding: 0 1rem;
+}
+
+/* Resume / Dossier banner card */
+.resume-banner-card {
+  grid-column: span 4;
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--accent-dim), var(--accent-dim));
+  border-top: 1px solid var(--accent-border);
+  border-bottom: 1px solid var(--accent-border);
+  min-height: auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.resume-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.resume-banner-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  flex-shrink: 0;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+.resume-banner-tag {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.resume-banner-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 0.15rem;
+}
+
+.resume-banner-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 4px var(--accent-glow); }
+  50%      { transform: scale(1.15); opacity: 1; box-shadow: 0 0 12px var(--accent-glow); }
 }
 
 /* Detail cards */
