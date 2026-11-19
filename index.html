@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Arka Datta — Full-Stack Web Developer &amp; Robotics Engineer. Portfolio of AI, robotics, and web development projects.">
-  <link rel="icon" type="image/png" href="logo/Layerstop_4-removebg-preview.png">
-  <title>Arka Datta | Portfolio</title>
+  <title>Arka Datta | Robotics Engineer &amp; Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Arka Datta — Autonomous scout rovers, LiDAR sensor fusion, air-gapped security software, and full-stack web applications.">
+  <link rel="canonical" href="https://arka-124.github.io/Portfolio/">
+  <link rel="icon" type="image/png" href="logo/favicon.png">
+
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arka-124.github.io/Portfolio/">
+  <meta property="og:title" content="Arka Datta | Robotics Engineer &amp; Full-Stack Developer">
+  <meta property="og:description" content="Portfolio of Arka Datta — Autonomous scout rovers, LiDAR sensor fusion, air-gapped systems, and full-stack engineering.">
+  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://arka-124.github.io/Portfolio/">
+  <meta name="twitter:title" content="Arka Datta | Robotics Engineer &amp; Full-Stack Developer">
+  <meta name="twitter:description" content="Portfolio of Arka Datta — Autonomous scout rovers, LiDAR sensor fusion, air-gapped systems, and full-stack engineering.">
+  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+
   <script>
     (function () {
       const savedTheme = localStorage.getItem('arka_portfolio_theme');
@@ -476,8 +494,8 @@
           <h2 class="section-title subsection-title">Milestones</h2>
           <div class="timeline-group" style="margin-bottom: 0;">
             <div class="timeline-item">
-              <h3 class="timeline-title">Failed BITSAT</h3>
-              <p class="timeline-subtitle">Pivoted direct focus to Autonomous &amp; Robotics</p>
+              <h3 class="timeline-title">Robotics &amp; Autonomous Focus</h3>
+              <p class="timeline-subtitle">Pivoted direct focus to Autonomous Systems &amp; Robotics</p>
             </div>
           </div>
         </div>
@@ -813,238 +831,23 @@
     <span class="toast-msg" id="cyber-toast-msg">[✓] COPIED TO CLIPBOARD</span>
   </div>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP with Subresource Integrity (SRI) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+          integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+          defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+          integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+          defer></script>
 
-  <script src="script.js"></script>
-  <script src="interactive.js"></script>
+  <!-- Core Scripts -->
+  <script src="script.js" defer></script>
+  <script type="module" src="glass-button.js"></script>
+  <script type="module" src="interactive.js"></script>
   <script src="cursor.js" defer></script>
-
-  <!-- Three.js Glass Connect Button -->
-  <script type="module">
-    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-
-    const container = document.getElementById('glass-button-container');
-    if (container) {
-      try {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-        camera.position.z = 5;
-
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(100, 100);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setClearColor(0x000000, 0);
-        renderer.domElement.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
-        container.appendChild(renderer.domElement);
-
-        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-        const dl = new THREE.DirectionalLight(0xffffff, 3);
-        dl.position.set(2, 5, 5); scene.add(dl);
-        const pl = new THREE.PointLight(0x00f0ff, 2.5);
-        pl.position.set(-2, -2, 3); scene.add(pl);
-
-        const mesh = new THREE.Mesh(
-          new THREE.TorusKnotGeometry(1.2, 0.38, 100, 16),
-          new THREE.MeshPhysicalMaterial({
-            color: 0xffffff, roughness: 0.05, metalness: 0,
-            transmission: 1.0, thickness: 3.0, ior: 1.5,
-            clearcoat: 1, clearcoatRoughness: 0,
-            opacity: 0.92, transparent: true
-          })
-        );
-        scene.add(mesh);
-
-        (function animate() {
-          requestAnimationFrame(animate);
-          mesh.rotation.x += 0.006;
-          mesh.rotation.y += 0.009;
-          renderer.render(scene, camera);
-        })();
-
-        container.addEventListener('click', () => { window.location.href = 'contact.html'; });
-      } catch (err) {
-        console.warn('WebGL initialization skipped for glass button:', err);
-      }
-    }
-  </script>
-
-  <!-- GSAP hero parallax + footer wordmark + nav scroll -->
-  <script>
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger);
-
-      const hero     = document.getElementById('hero');
-      const heroText = document.getElementById('hero-text');
-      const heroRight = document.getElementById('hero-right');
-
-      if (hero && heroText && heroRight) {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: hero,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1.2
-          }
-        })
-        .to(heroText,  { y: -120, scale: 0.92, opacity: 0.85, ease: 'power2.out' }, 0)
-        .to(heroRight, { y: -80, opacity: 0,   ease: 'power2.out' }, 0);
-
-        ScrollTrigger.create({
-          trigger: hero,
-          start: 'top top',
-          end: 'bottom top',
-          onEnter:      () => hero.classList.add('hero-active'),
-          onLeave:      () => hero.classList.remove('hero-active'),
-          onEnterBack:  () => hero.classList.add('hero-active'),
-          onLeaveBack:  () => hero.classList.remove('hero-active')
-        });
-      }
-
-      /* Footer ghost wordmark slide-in */
-      gsap.from('.footer-name', {
-        scrollTrigger: {
-          trigger: '.site-footer',
-          start: 'top 90%'
-        },
-        x: -200, opacity: 0, duration: 1.5, ease: 'power4.out'
-      });
-    }
-  </script>
-
-  <!-- Nav scroll-tint + GitHub popup + hamburger -->
-  <script>
-    (function () {
-      const SPEED = 0.5;
-
-      const header = document.getElementById('site-header');
-      const hero = document.getElementById('hero');
-      const aboutSection = document.getElementById('experience');
-      const aboutBgLayer = document.getElementById('about-bg-layer');
-
-      let ticking = false;
-
-      function updateOnScroll() {
-        if (header) {
-          header.classList.toggle('scrolled', window.scrollY > 60);
-        }
-
-        if (hero) {
-          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth <= 960) {
-            hero.style.setProperty('--hero-bg-y', '0px');
-            hero.style.setProperty('--hero-cutout-y', '0px');
-          } else {
-            const heroRect = hero.getBoundingClientRect();
-            if (heroRect.bottom > 0 && heroRect.top <= 0) {
-              const scrolled = -heroRect.top;
-              hero.style.setProperty('--hero-bg-y', `${scrolled * 0.35}px`);
-              hero.style.setProperty('--hero-cutout-y', `${scrolled * 0.22}px`);
-            } else if (heroRect.top > 0) {
-              hero.style.setProperty('--hero-bg-y', '0px');
-              hero.style.setProperty('--hero-cutout-y', '0px');
-            }
-          }
-        }
-
-        if (aboutSection && aboutBgLayer) {
-          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            aboutBgLayer.style.transform = '';
-            aboutBgLayer.style.visibility = 'visible';
-            aboutBgLayer.style.opacity = '1';
-          } else {
-            const rect = aboutSection.getBoundingClientRect();
-
-            if (rect.bottom <= 0) {
-              aboutBgLayer.style.visibility = 'hidden';
-              aboutBgLayer.style.opacity = '0';
-            } else if (rect.top >= window.innerHeight) {
-              aboutBgLayer.style.transform = 'translate3d(0, 0px, 0)';
-              aboutBgLayer.style.visibility = 'hidden';
-              aboutBgLayer.style.opacity = '0';
-            } else {
-              aboutBgLayer.style.visibility = 'visible';
-              aboutBgLayer.style.opacity = '1';
-              const scrolledPx = Math.max(-rect.top, 0);
-              const maxOffset = aboutSection.offsetHeight;
-              const translateY = Math.min(scrolledPx * SPEED, maxOffset);
-              aboutBgLayer.style.transform = `translate3d(0, ${translateY}px, 0)`;
-            }
-          }
-        }
-
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(updateOnScroll);
-          ticking = true;
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        if (!ticking) {
-          requestAnimationFrame(updateOnScroll);
-          ticking = true;
-        }
-      }, { passive: true });
-
-      window.addEventListener('hashchange', () => {
-        requestAnimationFrame(updateOnScroll);
-      });
-
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', () => {
-          setTimeout(updateOnScroll, 100);
-          setTimeout(updateOnScroll, 400);
-          setTimeout(updateOnScroll, 800);
-        });
-      });
-
-      updateOnScroll();
-
-      /* Hamburger + drawer */
-      const btn     = document.getElementById('hamburger');
-      const drawer  = document.getElementById('nav-drawer');
-      const overlay = document.getElementById('drawer-overlay');
-
-      function openDrawer() {
-        drawer.classList.add('open');
-        overlay.classList.add('visible');
-        btn.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-      function closeDrawer() {
-        drawer.classList.remove('open');
-        overlay.classList.remove('visible');
-        btn.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-
-      if (btn && drawer && overlay) {
-        btn.addEventListener('click', () =>
-          drawer.classList.contains('open') ? closeDrawer() : openDrawer()
-        );
-        overlay.addEventListener('click', closeDrawer);
-        drawer.querySelectorAll('a').forEach(a =>
-          a.addEventListener('click', closeDrawer)
-        );
-      }
-
-      /* GitHub popup */
-      const toggle   = document.getElementById('github-toggle');
-      const popup    = document.getElementById('github-popup');
-      const closeBtn = popup ? popup.querySelector('.popup-close') : null;
-
-      if (toggle && popup) {
-        toggle.addEventListener('click', () => popup.classList.toggle('visible'));
-      }
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => popup.classList.remove('visible'));
-      }
-    })();
-  </script>
 
 </body>
 </html>

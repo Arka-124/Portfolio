@@ -3,9 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ZeroEgress &mdash; Air-Gapped File Utilities. Convert, merge, sanitize, and process gigabyte files with zero server uploads and zero subscriptions, by Arka Datta.">
-  <title>ZeroEgress &mdash; Air-Gapped File Utilities | Arka</title>
-  <link rel="icon" type="image/png" href="../logo/Layerstop_4-removebg-preview.png">
+  <title>ZeroEgress — Air-Gapped File Utilities | Arka Datta</title>
+  <meta name="description" content="ZeroEgress — Air-Gapped Local File Processing Suite &amp; Native Application Distributor. 100% in-browser compute with zero server telemetry by Arka Datta.">
+  <link rel="canonical" href="https://arka-124.github.io/Portfolio/projects/zeroegress.html">
+  <link rel="icon" type="image/png" href="../logo/favicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://arka-124.github.io/Portfolio/projects/zeroegress.html">
+  <meta property="og:title" content="ZeroEgress — Air-Gapped File Utilities | Arka Datta">
+  <meta property="og:description" content="Air-gapped local browser processing suite and native OS application distributor. Zero external telemetry, zero network leakage.">
+  <meta property="og:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ZeroEgress — Air-Gapped File Utilities | Arka Datta">
+  <meta name="twitter:description" content="Air-gapped local browser processing suite and native OS application distributor. Zero data leakage.">
+  <meta name="twitter:image" content="https://arka-124.github.io/Portfolio/images/og-image.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
@@ -231,64 +246,11 @@
         <div id="fluid-glass-container"
              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; z-index: 0; pointer-events: none;">
         </div>
-
-        <script type="module">
-          import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-
-          window.addEventListener('load', () => {
-            const container = document.getElementById('fluid-glass-container');
-            if (!container) return;
-
-            try {
-              const scene    = new THREE.Scene();
-              const width    = container.clientWidth  || 300;
-              const height   = container.clientHeight || 300;
-              const camera   = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-              camera.position.z = 10;
-
-              const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-              renderer.setSize(width, height);
-              renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-              container.appendChild(renderer.domElement);
-
-              scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-              const dl = new THREE.DirectionalLight(0xffffff, 3);
-              dl.position.set(2, 5, 5); scene.add(dl);
-              const pl = new THREE.PointLight(0x00f0ff, 2.5);
-              pl.position.set(-2, -2, 5); scene.add(pl);
-
-              const mesh = new THREE.Mesh(
-                new THREE.TorusKnotGeometry(2.1, 0.7, 100, 16),
-                new THREE.MeshPhysicalMaterial({
-                  color: 0xffffff, roughness: 0, metalness: 0,
-                  transmission: 1, thickness: 5, ior: 1.15,
-                  clearcoat: 1, clearcoatRoughness: 0
-                })
-              );
-              scene.add(mesh);
-
-              window.addEventListener('resize', () => {
-                const w = container.clientWidth, h = container.clientHeight;
-                camera.aspect = w / h;
-                camera.updateProjectionMatrix();
-                renderer.setSize(w, h);
-              });
-
-              (function animate() {
-                requestAnimationFrame(animate);
-                mesh.rotation.x += 0.005;
-                mesh.rotation.y += 0.005;
-                renderer.render(scene, camera);
-              })();
-            } catch (err) {
-              console.warn('WebGL initialization skipped:', err);
-            }
-          });
-        </script>
       </div>
 
     </div>
   </div>
 
+  <script type="module" src="../glass-button.js"></script>
 </body>
 </html>
